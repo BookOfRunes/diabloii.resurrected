@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuneGlossary.Resurrected", "RuneGlossary.Resurrected\RuneGlossary.Resurrected.csproj", "{EC521A1E-10D2-4AE6-81B2-7512521FF744}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuneGlossary.Resurrected.Api", "RuneGlossary.Resurrected.Api\RuneGlossary.Resurrected.Api.csproj", "{78D6353F-8FFF-45D5-AA5A-3D4D09C50A19}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuneGlossary.Resurrected.Application", "RuneGlossary.Resurrected.Application\RuneGlossary.Resurrected.Application.csproj", "{E7F89ED1-7E71-4525-9F65-4DA7181DB2BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuneGlossary.Resurrected.Domain", "RuneGlossary.Resurrected.Domain\RuneGlossary.Resurrected.Domain.csproj", "{C427BF97-230D-4841-9771-F6C2B18B25F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuneGlossary.Resurrected.Infrastructure", "RuneGlossary.Resurrected.Infrastructure\RuneGlossary.Resurrected.Infrastructure.csproj", "{87506AD9-CEB4-47E9-99D3-B27C076EEC94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RuneGlossary.Resurrected.Test.Unit", "RuneGlossary.Resurrected.Test.Unit\RuneGlossary.Resurrected.Test.Unit.csproj", "{7B2E3668-5709-454E-9A21-599740E676E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC521A1E-10D2-4AE6-81B2-7512521FF744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC521A1E-10D2-4AE6-81B2-7512521FF744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC521A1E-10D2-4AE6-81B2-7512521FF744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC521A1E-10D2-4AE6-81B2-7512521FF744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78D6353F-8FFF-45D5-AA5A-3D4D09C50A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78D6353F-8FFF-45D5-AA5A-3D4D09C50A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78D6353F-8FFF-45D5-AA5A-3D4D09C50A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78D6353F-8FFF-45D5-AA5A-3D4D09C50A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7F89ED1-7E71-4525-9F65-4DA7181DB2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7F89ED1-7E71-4525-9F65-4DA7181DB2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7F89ED1-7E71-4525-9F65-4DA7181DB2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7F89ED1-7E71-4525-9F65-4DA7181DB2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C427BF97-230D-4841-9771-F6C2B18B25F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C427BF97-230D-4841-9771-F6C2B18B25F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C427BF97-230D-4841-9771-F6C2B18B25F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C427BF97-230D-4841-9771-F6C2B18B25F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87506AD9-CEB4-47E9-99D3-B27C076EEC94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87506AD9-CEB4-47E9-99D3-B27C076EEC94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87506AD9-CEB4-47E9-99D3-B27C076EEC94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87506AD9-CEB4-47E9-99D3-B27C076EEC94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2E3668-5709-454E-9A21-599740E676E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2E3668-5709-454E-9A21-599740E676E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2E3668-5709-454E-9A21-599740E676E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2E3668-5709-454E-9A21-599740E676E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7452867B-7360-41BB-A14C-59A20C187DB2}
+	EndGlobalSection
+EndGlobal
