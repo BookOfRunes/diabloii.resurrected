@@ -1,0 +1,105 @@
+﻿div.main {
+    display: grid;
+    grid-template-rows: auto min-content;
+    grid-row-gap: var(--gap-large);
+
+    height: 100%;
+    width: 100%;
+
+    padding: var(--padding);
+}
+
+div.item-types {
+    height: 100%;
+    width: max-content;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: var(--gap-large);
+
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+}
+
+div.armor {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--gap);
+}
+
+div.weapon {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: var(--gap-large);
+}
+
+div.column {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--gap);
+    grid-auto-rows: min-content;
+
+    align-content: center;
+}
+
+div.filters {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+div.sockets {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-row-gap: var(--gap);
+
+    height: max-content;
+}
+
+div.subfilters {
+    display: grid;
+    grid-template-rows: max-content max-content;
+    grid-row-gap: var(--gap);
+}
+
+div.sockets__value {
+    display: grid;
+    grid-template-columns: 4rem auto 4rem;
+    grid-column-gap: var(--gap);
+
+    align-items: center;
+
+    margin-left: var(--gap-large);
+
+    width: fit-content;
+}
+
+span {
+    width: max-content;
+}
+
+div.selector {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: var(--gap);
+
+    justify-content: start;
+}
+
+div.buttons {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+div.filter-area {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: var(--gap);
+}
+
+form {
+    height: 100%;
+    width: 100%;
+}

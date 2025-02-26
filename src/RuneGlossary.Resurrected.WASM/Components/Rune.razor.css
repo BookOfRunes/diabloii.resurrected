@@ -1,0 +1,88 @@
+﻿img {
+    width: 30px;
+    height: 30px;
+}
+
+div.main {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-column-gap: var(--gap);
+
+    align-items: center;
+}
+
+div.description-panel {
+    position: relative;
+    display: block;
+    border-bottom: 1px dotted black;
+}
+
+div.description-panel div.description{
+    visibility: hidden;
+    width: max-content;
+    background-color: var(--color-panel-background);
+    text-align: center;
+    border-radius: 0.4rem;
+    position: absolute;
+    z-index: 10000;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    font-size: 0.9rem;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+div.description-panel:hover div.description {
+    visibility: visible;
+    opacity: 1;
+}
+
+div.description {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--gap-large);
+    padding: var(--padding);
+
+    border-color: var(--color-dialog-border);
+    border-style: solid;
+    border-width: 1px;
+}
+
+div.description-first-row {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--gap);
+}
+
+div.description-second-row{
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--gap-small);
+}
+
+.unavailable {
+    opacity: 0.5;
+}
+
+.description-unavailable {
+    color: var(--color-invalid);
+}
+
+.description-name {
+    font-size: 1.2rem;
+}
+
+span.label {
+    color: var(--color-text);
+}
+
+span.specification {
+    color: var(--color-text-highlighted);
+}

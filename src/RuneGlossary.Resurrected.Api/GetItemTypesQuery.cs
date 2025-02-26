@@ -2,26 +2,19 @@
 
 namespace RuneGlossary.Resurrected.Api
 {
-    public enum ItemClass
-    {
-        Armor,
-        Weapon
-    }
+	public enum ItemClass
+	{
+		Armor,
+		Weapon
+	}
 
-    public record GetItemTypesQuery : Query<IEnumerable<GetItemTypesQuery.Result>>
-    {
-        public record Result
-        {
-            public int Id { get; }
-            public ItemClass Class { get; }
-            public string Name { get; }
-
-            public Result(int id, ItemClass @class, string name)
-            {
-                Id = id;
-                Class = @class;
-                Name = name;
-            }
-        }
-    }
+	public record GetItemTypesQuery : Query<IEnumerable<GetItemTypesQuery.Result>>
+	{
+		public record Result
+		{
+			public required int Id { get; init; }
+			public required ItemClass Class { get; init; }
+			public required string Name { get; init; }
+		}
+	}
 }

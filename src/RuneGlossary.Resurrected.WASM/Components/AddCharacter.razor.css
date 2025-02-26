@@ -1,0 +1,110 @@
+﻿div.main {
+    display: grid;
+    grid-template-rows: min-content min-content min-content;
+    grid-row-gap: var(--gap-large);
+
+    justify-items: center;
+}
+
+div.fields {
+    display: grid;
+    grid-row-gap: var(--gap);
+
+    width: 40%;
+
+    align-items: center;
+}
+
+div.field {
+    display: grid;
+    grid-template-rows: 1fr min-content;
+    grid-row-gap: var(--gap-small);
+}
+
+div.label {
+    display: grid;
+
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    align-items: baseline;
+    grid-column-gap: var(--gap);
+}
+
+div.classes {
+    width: fit-content;
+    height: fit-content;
+
+    display: grid;
+    grid-auto-flow: column;
+}
+
+div.text {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--gap);
+
+    justify-items: center
+}
+
+img {
+    width: auto;
+    height: 12rem;
+
+    opacity: 0.5;
+}
+
+img.selected {
+    opacity: 1;
+}
+
+input {
+    width: 100%;
+}
+
+img.amazon {
+    margin-top: 120px;
+    margin-right: -3rem;
+}
+
+img.assassin {
+    margin-top: 60px;
+    margin-right: -2rem;
+}
+
+img.necromancer {
+    margin-top: 20px;
+    margin-right: -1rem;
+}
+
+img.barbarian {
+    margin-top: 0;
+}
+
+img.paladin {
+    margin-top: 20px;
+    margin-left: -1rem;
+}
+
+img.sorceress {
+    margin-top: 60px;
+    margin-left: -2rem;
+}
+
+img.druid {
+    margin-top: 120px;
+    margin-left: -3rem;
+}
+
+span.class {
+    font-size: 1.4em;
+    color: var(--color-text-strong);
+}
+
+span.description {
+    font-size: .8em;
+
+    min-height: 3em;
+    max-width: 220px;
+
+    text-align: center;
+}

@@ -1,0 +1,16 @@
+﻿@inject Loading Loading
+
+@if (Loading.Visible)
+{
+	<div class="overlay">
+		<img src="/assets/frozen-orb.gif"/>
+		<span>Loading</span>
+	</div>	
+}
+
+@code {
+	protected override void OnInitialized()
+	{
+		Loading.Changed += (_, __) => StateHasChanged();
+	}
+}
