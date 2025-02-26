@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      cache_key: ${{ steps.restore.outputs.cache_key }}
+      cache_key: ${{ steps.execute.outputs.cache_key }}
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Execute
-        id: restore
+        id: execute
         uses: mihben/actions-repository/.github/actions/dotnet/restore-dependencies@feature/dotnet-actions
         with:
           working-directory: src
@@ -24,17 +24,30 @@ jobs:
     needs: [restore-dependecies]
     runs-on: ubuntu-latest
 
+    outputs:
+      artifact_name: ${{ steps.execute.outputs.artifact_name }}
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Execute
+        id: execute
         uses: mihben/actions-repository/.github/actions/dotnet/build@feature/dotnet-actions
         with:
           working-directory: src
           cache_key: ${{ needs.restore-dependecies.outputs.cache_key }}
           packages-directory: ${{ github.workspace }}
 
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/test@feature/dotnet-actions
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact_name }}
     #   - name: Test
     #     run: dotnet test --configuration Release --no-build --no-restore --results-directory test-results --logger trx --collect:"XPlat Code Coverage;Format=cobertura"
     #     continue-on-error: true
