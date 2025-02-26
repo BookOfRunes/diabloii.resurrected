@@ -44,23 +44,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Execute
         uses: mihben/actions-repository/.github/actions/dotnet/test@feature/dotnet-actions
         with:
           artifact_name: ${{ needs.build.outputs.artifact_name }}
-    #   - name: Test
-    #     run: dotnet test --configuration Release --no-build --no-restore --results-directory test-results --logger trx --collect:"XPlat Code Coverage;Format=cobertura"
-    #     continue-on-error: true
-
-    #   - name: Debug
-    #     run: |
-    #       cd test-results
-    #       ls -a
-
-    #   - name: Install TestSpace CLI
-    #     uses: testspace-com/setup-testspace@v1
-    #     with:
-    #       domain: ${{ github.repository_owner }}
-
-    #   - name: Publish Test Results
-    #     run: testspace test-results/*.trx test-results/**/coverage.cobertura.xml
