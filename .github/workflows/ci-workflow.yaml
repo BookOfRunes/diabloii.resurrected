@@ -25,7 +25,9 @@ jobs:
         continue-on-error: true
 
       - name: Debug
-        run: ls -a
+        run: |
+          cd test-results
+          ls -a
 
       - name: Install TestSpace CLI
         uses: testspace-com/setup-testspace@v1
