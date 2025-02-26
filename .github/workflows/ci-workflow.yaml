@@ -35,4 +35,4 @@ jobs:
           domain: ${{ github.repository_owner }}
 
       - name: Publish Test Results
-        run: testspace test_results/*.trx
+        run: testspace test-results/*.trx
