@@ -14,4 +14,3 @@ jobs:
         uses: mihben/actions-repository/.github/actions/dotnet/restore-dependencies@feature/dotnet-actions
         with:
           working-directory: src
-          packages-directory: ../nuget-packages
