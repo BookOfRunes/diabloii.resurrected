@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Restore Dependencies
+      - name: Execute
         id: restore
         uses: mihben/actions-repository/.github/actions/dotnet/restore-dependencies@feature/dotnet-actions
         with:
