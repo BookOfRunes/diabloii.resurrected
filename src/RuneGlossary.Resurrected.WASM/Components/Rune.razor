@@ -1,0 +1,43 @@
+﻿@using RuneGlossary.Resurrected.WASM.Models
+
+<div class="description-panel">
+	<div class="main @(Available ? "" : "unavailable")">
+		<img src="/assets/runes/@(Model.Name.ToLower()).webp"/>
+		<span class="rune">@Model.Name</span>
+	</div>
+
+	<div class="description">
+		<div class="description-first-row">
+			<span class="rune description-name">@Model.Name</span>
+			<div class="specification">
+				<span class="label">Level:</span>
+				<span class="@(Available ? "" : "description-unavailable")">@Model.Level</span>
+			</div>
+		</div>
+		<div class="description-second-row">
+			<div class="specification">
+				<span class="label">Weapon:</span>
+				<span class="specification">@Model.InWeapon</span>
+			</div>
+			<div class="specification">
+				<span class="label">Body Armor:</span>
+				<span class="specification">@Model.InBodyArmor</span>
+			</div>
+			<div class="specification">
+				<span class="label">Helmet:</span>
+				<span class="specification">@Model.InHelmet</span>
+			</div>
+			<div class="specification">
+				<span class="label">Shield:</span>
+				<span class="specification">@Model.InShield</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public required Models.Rune Model { get; set; } = null!;
+	[Parameter]
+	public required bool Available { get; set; } = false;
+}

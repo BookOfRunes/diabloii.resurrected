@@ -20,23 +20,28 @@ builder.Services.AddScoped<IValidator<GetRuneWordsQuery>, GetRuneWordsQueryValid
 
 builder.AddCQS(builder =>
 {
-    builder.AddPerformerFrom<RunePerformers>();
+	builder.AddPerformersFrom<RunePerformers>();
 
-    builder.AddRequestValidator()
-        .UseFluentRequestValidator(builder => { });
+	builder.AddRequestValidator()
+		.UseFluentRequestValidator(builder => { });
 
-    builder.AddMvcRequestReceiver()
-        .UseLogger();
+	builder.AddMvcRequestReceiver()
+		.UseLogger();
 
-    builder.AddGenericRequestHandler();
-
+	builder.AddGenericRequestHandler();
 });
 
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(builder.Configuration["Database"]));
 
 var app = builder.Build();
 
-app.UseDefaultExceptionHandler();
+//app.UseExceptionHandler();
+app.UseCors(builder =>
+{
+	builder.AllowAnyMethod();
+	builder.AllowAnyHeader();
+	builder.AllowAnyOrigin();
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -46,8 +51,8 @@ app.MapGenericRequestController();
 
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
-    db.Database.Migrate();
+	var db = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+	db.Database.Migrate();
 }
 
 app.Run();

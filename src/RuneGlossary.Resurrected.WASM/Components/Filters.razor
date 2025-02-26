@@ -1,0 +1,139 @@
+﻿@using Microsoft.AspNetCore.Components.Forms
+@using RuneGlossary.Resurrected.Api
+@using RuneGlossary.Resurrected.WASM.Controls
+@using RuneGlossary.Resurrected.WASM.Services
+@using STrain
+
+@inject ICharacterService CharacterService;
+@inject IRuneWordService RuneWordService;
+@inject ILoading Loading;
+
+@if (CharacterService.Current is not null)
+{
+	<EditForm style="height: 100%" Model="CharacterService.Current.Filters">
+		<div class="main">
+			<div class="filters">
+				<div class="item-types">
+					<div class="armor">
+						@foreach (var armor in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Armor))
+						{
+							<div class="selector">
+								<InputCheckbox @bind-Value=armor.Selected></InputCheckbox>
+								<span>@armor.Name</span>
+							</div>
+						}
+					</div>
+					<div class="weapon">
+						<div class="column">
+							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Take(5))
+							{
+								<div class="selector">
+									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<span>@weapon.Name</span>
+								</div>
+							}
+						</div>
+						<div class="column">
+							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Skip(1 * 5).Take(5))
+							{
+								<div class="selector">
+									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<span>@weapon.Name</span>
+								</div>
+							}
+						</div>
+						<div class="column">
+							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Skip(2 * 5).Take(5))
+							{
+								<div class="selector">
+									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<span>@weapon.Name</span>
+								</div>
+							}
+						</div>
+						<div class="column">
+							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Skip(3 * 5).Take(5))
+							{
+								<div class="selector">
+									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<span>@weapon.Name</span>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+				<div class="subfilters">
+					<div class="sockets">
+						<span class="label">Sockets:</span>
+						<div class="sockets__value">
+							<InputNumber min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketFrom)"></InputNumber>
+							<span>-</span>
+							<InputNumber min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketTo)"></InputNumber>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="buttons">
+				<div>
+					<button @onclick="SelectArmors">Armors</button>
+					<button @onclick="SelectWeapons">Weapons</button>
+				</div>
+				<div>
+					<button @onclick="GetAllAsync">All</button>
+					<button @onclick="GetUseableAsync">Usable</button>
+					<button @onclick="GetByFilterAsync">Filter</button>
+				</div>
+			</div>
+		</div>
+	</EditForm>
+}
+
+@code {
+	protected override void OnInitialized()
+	{
+		CharacterService.Loaded += (_, __) => StateHasChanged();
+		CharacterService.Changed += (_, __) => StateHasChanged();
+	}
+
+	private void SelectArmors()
+	{
+		var hasBeenSelected = CharacterService.Current!.Filters.ItemTypes.Where(f => f.Class == ItemClass.Armor).Any(f => f.Selected);
+		foreach (var armor in CharacterService.Current!.Filters.ItemTypes.Where(f => f.Class == ItemClass.Armor))
+		{
+			armor.Selected = !hasBeenSelected;
+		}
+	}
+
+	private void SelectWeapons()
+	{
+		var hasBeenSelected = CharacterService.Current!.Filters.ItemTypes.Where(f => f.Class == ItemClass.Weapon).Any(f => f.Selected);
+		foreach (var armor in CharacterService.Current!.Filters.ItemTypes.Where(f => f.Class == ItemClass.Weapon))
+		{
+			armor.Selected = !hasBeenSelected;
+		}
+	}
+
+	private async Task GetUseableAsync()
+	{
+		using (Loading.Show())
+		{
+			await RuneWordService.LoadAsync(CharacterService.Current!.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList(), 2, 6, CharacterService.Current!.Level, default);
+		}
+	}
+
+	private async Task GetAllAsync()
+	{
+		using (Loading.Show())
+		{
+			await RuneWordService.LoadAsync(CharacterService.Current!.Filters.ItemTypes.Select(f => f.Id).ToList(), 2, 6, 99, default);
+		}
+	}
+
+	private async Task GetByFilterAsync()
+	{
+		using (Loading.Show())
+		{
+			await RuneWordService.LoadAsync(CharacterService.Current!.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList(), CharacterService.Current.Filters.SocketFrom, CharacterService.Current.Filters.SocketTo, 99, default);
+		}
+	}
+}

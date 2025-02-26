@@ -1,0 +1,70 @@
+﻿div.main {
+    display: grid;
+    grid-gap: var(--gap-large);
+
+    justify-content: center;
+
+    padding: var(--padding-extra);
+
+    border-color: var(--color-panel-border);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0.4rem;
+
+    background-color: var(--color-background);
+
+    text-align: center;
+}
+
+div.basics {
+    display: grid;
+    grid-row-gap: var(--gap);
+}
+
+div.runes {
+    display: grid;
+    grid-column-gap: var(--gap);
+    grid-auto-flow: column;
+
+    width: max-content;
+
+    justify-self: center;
+}
+
+div.item-types {
+    display: grid;
+    grid-column-gap: var(--gap-small);
+    grid-auto-flow: column;
+
+    width: max-content;
+
+    justify-self: center;
+}
+
+div.description {
+    display: grid;
+    grid-row-gap: var(--gap);
+
+    color: var(--color-text-runeword-description)
+}
+
+span.name {
+    color: var(--color-text-runeword);
+    font-size: 1.4rem;
+}
+
+span.level {
+    color: var(--color-text-highlighted);
+}
+
+span.available {
+    color: var(--color-text-highlighted);
+}
+
+span.unavailable {
+    color: var(--color-text-runeword-unavailable);
+}
+
+span.skill {
+    text-decoration: underline;
+}
