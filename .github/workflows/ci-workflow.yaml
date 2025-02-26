@@ -35,4 +35,4 @@ jobs:
           domain: ${{ github.repository_owner }}
 
       - name: Publish Test Results
-        run: testspace test-results/*.trx test-results/**/coverga.cobertura.xml
+        run: testspace test-results/*.trx test-results/**/coverage.cobertura.xml
