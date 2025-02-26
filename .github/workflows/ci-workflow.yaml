@@ -2,26 +2,38 @@ name: "Pull Request Title"
 
 on: workflow_dispatch
 
-defaults:
-  run:
-    working-directory: src
-
 jobs:
   restore-dependecies:
     runs-on: ubuntu-latest
+
+    outputs:
+      cache_key: ${{ steps.restore.outputs.cache_key }}
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Restore Dependencies
+        id: restore
         uses: mihben/actions-repository/.github/actions/dotnet/restore-dependencies@feature/dotnet-actions
         with:
           working-directory: src
           packages-directory: ${{ github.workspace }}
 
-    #   - name: Build
-    #     run: dotnet build --no-restore --configuration Release
+  build:
+    needs: [restore-dependecies]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/build@feature/dotnet-actions
+        with:
+          working-directory: src
+          cache_key: ${{ needs.restore-dependecies.outputs.cache_key }}
+          packages-directory: ${{ github.workspace }}
 
     #   - name: Test
     #     run: dotnet test --configuration Release --no-build --no-restore --results-directory test-results --logger trx --collect:"XPlat Code Coverage;Format=cobertura"
