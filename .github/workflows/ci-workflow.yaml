@@ -7,7 +7,7 @@ defaults:
     working-directory: src
 
 jobs:
-  restore-dependencies:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +23,9 @@ jobs:
       - name: Test
         run: dotnet test --configuration Release --no-build --no-restore --results-directory test-results
         continue-on-error: true
+
+      - name: Debug
+        run: ls -a
 
       - name: Install TestSpace CLI
         uses: testspace-com/setup-testspace@v1
