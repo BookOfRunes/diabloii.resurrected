@@ -88,21 +88,21 @@ jobs:
 
             ### Environment
             Restore Dependencies
-            : __OS__: ${{ needs.restore-dependecies.outputs.os }}
-            : __.NET Version__: ${{ needs.restore-dependecies.outputs.dotnet_version }}
-            : __Outcomes__: ${{ needs.restore-dependecies.result }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__OS__: ${{ needs.restore-dependecies.outputs.os }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__.NET Version__: ${{ needs.restore-dependecies.outputs.dotnet_version }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__Outcomes__: ${{ needs.restore-dependecies.result }}
             
             ---
             
             Build
-            : __OS__: ${{ needs.build.outputs.os }}
-            : __.NET Version__: ${{ needs.build.outputs.dotnet_version }}
-            : __Outcomes__: ${{ needs.build.result }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__OS__: ${{ needs.build.outputs.os }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__.NET Version__: ${{ needs.build.outputs.dotnet_version }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__Outcomes__: ${{ needs.build.result }}
             
             ---
 
             Test
-            : __OS__: ${{ needs.test.outputs.os }}
-            : __.NET Version__: ${{ needs.test.outputs.dotnet_version }}
-            : __Outcomes__: ${{ needs.test.result }}"
+            &nbsp;&nbsp;&nbsp;&nbsp;__OS__: ${{ needs.test.outputs.os }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__.NET Version__: ${{ needs.test.outputs.dotnet_version }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__Outcomes__: ${{ needs.test.result }}"
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
