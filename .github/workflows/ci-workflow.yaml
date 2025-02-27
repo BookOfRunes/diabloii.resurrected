@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Debug
         id: debug
-        run: echo "DOTNET_VERSION=dotnet --version" >> $GITHUB_OUTPUT
+        run: echo "DOTNET_VERSION=$(dotnet --version)" >> $GITHUB_OUTPUT
 
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: Debug
         id: debug
-        run: echo "DOTNET_VERSION=dotnet --version" >> $GITHUB_OUTPUT
+        run: echo "DOTNET_VERSION=$(dotnet --version)" >> $GITHUB_OUTPUT
 
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -66,7 +66,7 @@ jobs:
     steps:
       - name: Debug
         id: debug
-        run: echo "DOTNET_VERSION=dotnet --version" >> $GITHUB_OUTPUT
+        run: echo "DOTNET_VERSION=$(dotnet --version)" >> $GITHUB_OUTPUT
 
       - name: Checkout Code
         uses: actions/checkout@v4
