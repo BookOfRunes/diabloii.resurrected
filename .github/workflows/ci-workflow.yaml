@@ -7,13 +7,6 @@ on:
 
 
 jobs:
-  preparation:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Add Link Annotation
-        run: echo "::notice title=Pull Request::#${{ github.event.pull_request.number }} - ${{ github.event.pull_request.number }}'"
-
   restore-dependecies:
     runs-on: ubuntu-latest
 
@@ -62,3 +55,11 @@ jobs:
         uses: mihben/actions-repository/.github/actions/dotnet/test@feature/dotnet-actions
         with:
           artifact_name: ${{ needs.build.outputs.artifact_name }}
+
+  _post:
+    needs: [restore-dependecies, build, test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Summarize
+        run: echo "###(${{ github.event.pull_request.number }} - ${{ github.event.pull_request.number }})[${{ github.event.pull_request.url }}]###"
