@@ -12,8 +12,14 @@ jobs:
 
     outputs:
       cache_key: ${{ steps.execute.outputs.cache_key }}
+      os: ${{ runner.os }}
+      dotnet_version: ${{ steps.debug.outputs.DOTNET_VERSION }}
 
     steps:
+      - name: Debug
+        id: debug
+        run: echo "DOTNET_VERSION=dotnet --version" >> $GITHUB_OUTPUT
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -30,8 +36,14 @@ jobs:
 
     outputs:
       artifact_name: ${{ steps.execute.outputs.artifact_name }}
+      os: ${{ runner.os }}
+      dotnet_version: ${{ steps.debug.outputs.DOTNET_VERSION }}
 
     steps:
+      - name: Debug
+        id: debug
+        run: echo "DOTNET_VERSION=dotnet --version" >> $GITHUB_OUTPUT
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -47,7 +59,15 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
 
+    outputs:
+      os: ${{ runner.os }}
+      dotnet_version: ${{ steps.debug.outputs.DOTNET_VERSION }}
+
     steps:
+      - name: Debug
+        id: debug
+        run: echo "DOTNET_VERSION=dotnet --version" >> $GITHUB_OUTPUT
+        
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -62,4 +82,20 @@ jobs:
 
     steps:
       - name: Summarize
-        run: echo "### [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request.url }})" >> $GITHUB_STEP_SUMMARY
+        run: |
+          SUMMARY=$"
+            # [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request._links.html }})
+            ## Steps
+            ### Restore Dependencies
+            ***OS***: ${{ needs.restore-dependecies.outputs.os }}
+            ***.NET Version***: ${{ needs.restore-dependecies.outputs.dotnet_version }}
+            
+            ### Build
+            ***OS***: ${{ needs.build.outputs.os }}
+            ***.NET Version***: ${{ needs.build.outputs.dotnet_version }}
+            
+            ### Test
+            ***OS***: ${{ needs.test.outputs.os }}
+            ***.NET Version***: ${{ needs.test.outputs.dotnet_version }}
+          "
+          echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
