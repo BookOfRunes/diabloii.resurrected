@@ -67,7 +67,7 @@ jobs:
       - name: Debug
         id: debug
         run: echo "DOTNET_VERSION=dotnet --version" >> $GITHUB_OUTPUT
-        
+
       - name: Checkout Code
         uses: actions/checkout@v4
 
@@ -84,17 +84,17 @@ jobs:
       - name: Summarize
         run: |
           SUMMARY=$"
-            # [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request._links.html }})
-            ## Steps
-            ### Restore Dependencies
+            ### [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request._links.html }})
+            #### Steps
+            ##### Restore Dependencies
             ***OS***: ${{ needs.restore-dependecies.outputs.os }}
             ***.NET Version***: ${{ needs.restore-dependecies.outputs.dotnet_version }}
             
-            ### Build
+            ##### Build
             ***OS***: ${{ needs.build.outputs.os }}
             ***.NET Version***: ${{ needs.build.outputs.dotnet_version }}
             
-            ### Test
+            ##### Test
             ***OS***: ${{ needs.test.outputs.os }}
             ***.NET Version***: ${{ needs.test.outputs.dotnet_version }}
           "
