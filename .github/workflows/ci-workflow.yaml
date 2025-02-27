@@ -1,8 +1,19 @@
-name: "Pull Request Title"
+name: CI Pipeline
+run-name: 'PR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.number }}'
 
-on: workflow_dispatch
+on:   
+  pull_request:
+    branches: [develop]
+
 
 jobs:
+  preparation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Add Link Annotation
+        run: echo "::notice title=Pull Request::#${{ github.event.pull_request.number }} - ${{ github.event.pull_request.number }}'"
+
   restore-dependecies:
     runs-on: ubuntu-latest
 
