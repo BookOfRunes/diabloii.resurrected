@@ -1,5 +1,5 @@
 name: CI Pipeline
-run-name: 'PR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.number }}'
+run-name: 'PR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}'
 
 on:   
   pull_request:
@@ -62,4 +62,4 @@ jobs:
 
     steps:
       - name: Summarize
-        run: echo "###(${{ github.event.pull_request.number }} - ${{ github.event.pull_request.number }})[${{ github.event.pull_request.url }}]###"
+        run: echo "###(${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }})[${{ github.event.pull_request.url }}]###" >> $GITHUB_STEP_SUMMARY
