@@ -87,22 +87,22 @@ jobs:
             ## [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }})
 
             ### Environment
-            #### Restore Dependencies
-            __OS__: ${{ needs.restore-dependecies.outputs.os }}
-            __.Net Version__: ${{ needs.restore-dependecies.outputs.dotnet_version }}
-            __Outcomes__: ${{ needs.restore-dependecies.result }}
+            Restore Dependencies
+            : __OS__: ${{ needs.restore-dependecies.outputs.os }}
+            : __.NET Version__: ${{ needs.restore-dependecies.outputs.dotnet_version }}
+            : __Outcomes__: ${{ needs.restore-dependecies.result }}
             
             ---
             
-            #### Build
-            - __OS__: ${{ needs.build.outputs.os }}
-            - __.Net Version__: ${{ needs.build.outputs.dotnet_version }}
-            - __Outcomes__: ${{ needs.build.result }}
+            Build
+            : __OS__: ${{ needs.build.outputs.os }}
+            : __.NET Version__: ${{ needs.build.outputs.dotnet_version }}
+            : __Outcomes__: ${{ needs.build.result }}
             
             ---
 
-            #### Test
-            - __OS__: ${{ needs.test.outputs.os }}
-            - __.Net Version__: ${{ needs.test.outputs.dotnet_version }}
-            - __Outcomes__: ${{ needs.test.result }}"
+            Test
+            : __OS__: ${{ needs.test.outputs.os }}
+            : __.NET Version__: ${{ needs.test.outputs.dotnet_version }}
+            : __Outcomes__: ${{ needs.test.result }}"
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
