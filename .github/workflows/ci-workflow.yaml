@@ -84,7 +84,7 @@ jobs:
       - name: Summarize
         run: |
           SUMMARY=$"
-            ## [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request._links.self.href }})
+            ## [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }})
 
             ### Environment
             #### Restore Dependencies
