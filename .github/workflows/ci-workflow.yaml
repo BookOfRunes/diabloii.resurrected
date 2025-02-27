@@ -84,22 +84,24 @@ jobs:
       - name: Summarize
         run: |
           SUMMARY=$"
-            ### [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request._links.self.href }}) ###
+            ## [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request._links.self.href }})
 
-            #### Environment
-            ##### Restore Dependencies
-            - __OS__: ${{ needs.restore-dependecies.outputs.os }}
-            - __.Net Version__: ${{ needs.restore-dependecies.outputs.dotnet_version }}
-            - __Outcomes__: ${{ needs.restore-dependecies.result }}
+            ### Environment
+            #### Restore Dependencies
+            __OS__: ${{ needs.restore-dependecies.outputs.os }}
+            __.Net Version__: ${{ needs.restore-dependecies.outputs.dotnet_version }}
+            __Outcomes__: ${{ needs.restore-dependecies.result }}
+            
             ---
-
-            ##### Build
+            
+            #### Build
             - __OS__: ${{ needs.build.outputs.os }}
             - __.Net Version__: ${{ needs.build.outputs.dotnet_version }}
             - __Outcomes__: ${{ needs.build.result }}
+            
             ---
 
-            ##### Test
+            #### Test
             - __OS__: ${{ needs.test.outputs.os }}
             - __.Net Version__: ${{ needs.test.outputs.dotnet_version }}
             - __Outcomes__: ${{ needs.test.result }}"
