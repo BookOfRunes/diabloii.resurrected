@@ -1,0 +1,108 @@
+name: CI Pipeline
+run-name: 'PR: #${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}'
+
+on:   
+  pull_request:
+    branches: [develop]
+
+
+jobs:
+  restore-dependecies:
+    runs-on: ubuntu-latest
+
+    outputs:
+      cache_key: ${{ steps.execute.outputs.cache_key }}
+      os: ${{ runner.os }}
+      dotnet_version: ${{ steps.debug.outputs.DOTNET_VERSION }}
+
+    steps:
+      - name: Debug
+        id: debug
+        run: echo "DOTNET_VERSION=$(dotnet --version)" >> $GITHUB_OUTPUT
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        id: execute
+        uses: mihben/actions-repository/.github/actions/dotnet/restore-dependencies@feature/dotnet-actions
+        with:
+          working-directory: src
+          packages-directory: ${{ github.workspace }}
+
+  build:
+    needs: [restore-dependecies]
+    runs-on: ubuntu-latest
+
+    outputs:
+      artifact_name: ${{ steps.execute.outputs.artifact_name }}
+      os: ${{ runner.os }}
+      dotnet_version: ${{ steps.debug.outputs.DOTNET_VERSION }}
+
+    steps:
+      - name: Debug
+        id: debug
+        run: echo "DOTNET_VERSION=$(dotnet --version)" >> $GITHUB_OUTPUT
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        id: execute
+        uses: mihben/actions-repository/.github/actions/dotnet/build@feature/dotnet-actions
+        with:
+          working-directory: src
+          cache_key: ${{ needs.restore-dependecies.outputs.cache_key }}
+          packages-directory: ${{ github.workspace }}
+
+  test:
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    outputs:
+      os: ${{ runner.os }}
+      dotnet_version: ${{ steps.debug.outputs.DOTNET_VERSION }}
+
+    steps:
+      - name: Debug
+        id: debug
+        run: echo "DOTNET_VERSION=$(dotnet --version)" >> $GITHUB_OUTPUT
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/test@feature/dotnet-actions
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact_name }}
+
+  _post:
+    needs: [restore-dependecies, build, test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Summarize
+        run: |
+          SUMMARY=$"
+            ## [${{ github.event.pull_request.number }} - ${{ github.event.pull_request.title }}](${{ github.event.pull_request.html_url }})
+
+            ### Environment
+            Restore Dependencies
+            &nbsp;&nbsp;&nbsp;&nbsp;__OS__: ${{ needs.restore-dependecies.outputs.os }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__.NET Version__: ${{ needs.restore-dependecies.outputs.dotnet_version }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__Outcomes__: ${{ needs.restore-dependecies.result }}
+            
+            ---
+            
+            Build
+            &nbsp;&nbsp;&nbsp;&nbsp;__OS__: ${{ needs.build.outputs.os }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__.NET Version__: ${{ needs.build.outputs.dotnet_version }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__Outcomes__: ${{ needs.build.result }}
+            
+            ---
+
+            Test
+            &nbsp;&nbsp;&nbsp;&nbsp;__OS__: ${{ needs.test.outputs.os }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__.NET Version__: ${{ needs.test.outputs.dotnet_version }}
+            &nbsp;&nbsp;&nbsp;&nbsp;__Outcomes__: ${{ needs.test.result }}"
+          echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY

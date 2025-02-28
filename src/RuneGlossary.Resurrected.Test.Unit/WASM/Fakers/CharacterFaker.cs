@@ -7,12 +7,15 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Fakers
 	{
 		public CharacterFaker()
 		{
-			RuleFor(c => c.Filters, new List<ItemType>());
+
 		}
 
 		public CharacterFaker Filter(IEnumerable<ItemType> filters)
 		{
-			RuleFor(c => c.Filters, filters);
+			RuleFor(c => c.Filters, new FilterData
+			{
+				ItemTypes = filters
+			});
 
 			return this;
 		}

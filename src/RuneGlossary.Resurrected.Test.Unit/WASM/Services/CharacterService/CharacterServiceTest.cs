@@ -281,7 +281,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Services
 				Name = c.Name,
 				Class = c.Class,
 				Level = c.Level,
-				Filters = c.Filters.Where(f => f.Selected).Select(f => f.Id).ToList()
+				Filters = c.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList()
 			}).ToList();
 		}
 
@@ -304,7 +304,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Services
 					Assert.Equal(character.Name, c.Name);
 					Assert.Equal(character.Class, c.Class);
 					Assert.Equal(character.Level, c.Level);
-					Assert.Collection(c.Filters, character.Filters.AsInspectors().ToArray());
+					Assert.Collection(c.Filters.ItemTypes, character.Filters.ItemTypes.AsInspectors().ToArray());
 				};
 			}
 		}
