@@ -134,7 +134,7 @@ namespace RuneGlossary.Resurrected.WASM.Services
         }
     }
 
-    file record Data
+    file sealed record Data
     {
         public required string Name { get; init; }
         public required Class Class { get; init; }
