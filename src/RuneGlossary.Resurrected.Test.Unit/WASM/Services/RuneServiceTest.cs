@@ -90,6 +90,28 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Services
 			// Assert
 			_storageMock.Verify(s => s.GetItemAsync<IEnumerable<int>>("runes", It.IsAny<CancellationToken>()), Times.Once());
 		}
+
+		[Fact(DisplayName = "[UNIT][RSV-005] - Save Selected Runes")]
+		[Trait("Feature", "RN - Runes")]
+		public async Task RuneService_LoadAsync_SaveSelectedRunes()
+		{
+			// Arrange
+			var sut = CreateSUT();
+
+			_senderMock.Setup(s => s.SendAsync<GetRunesQuery, IEnumerable<GetRunesQuery.Rune>>(It.IsAny<GetRunesQuery>(), It.IsAny<CancellationToken>()))
+				.ReturnsAsync(new AutoFaker<GetRunesQuery.Rune>().Generate(33));
+
+			await sut.LoadAsync(default);
+
+			var rune = new Faker().PickRandom(sut.Runes);
+			rune.Selected = true;
+
+			// Act
+			await sut.SaveAsync(default);
+
+			// Assert
+			_storageMock.Verify(s => s.SetItemAsync("runes", It.Is<IEnumerable<int>>(r => r.SequenceEqual(new List<int>() { rune.Id })), It.IsAny<CancellationToken>()), Times.Once());
+		}
 	}
 
 	file static class RuneServiceTestExtensions

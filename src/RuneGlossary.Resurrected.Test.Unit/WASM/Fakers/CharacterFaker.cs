@@ -7,7 +7,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Fakers
 	{
 		public CharacterFaker()
 		{
-
+			RuleFor(c => c.Level, f => f.Random.Int(1, 99));
 		}
 
 		public CharacterFaker Filter(IEnumerable<ItemType> filters)

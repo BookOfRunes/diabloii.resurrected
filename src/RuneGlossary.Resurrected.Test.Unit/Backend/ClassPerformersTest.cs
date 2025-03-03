@@ -27,7 +27,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.Backend
 		private ClassPerformers CreateSUT()
 		{
 			_context = new DbContextOptionsBuilder<DatabaseContext>()
-								.UseInMemoryDatabase(nameof(RuneWordPerformersTest))
+								.UseInMemoryDatabase(nameof(ClassPerformersTest))
 								.ConfigureWarnings(builder => builder.Ignore(InMemoryEventId.TransactionIgnoredWarning))
 								.Options;
 

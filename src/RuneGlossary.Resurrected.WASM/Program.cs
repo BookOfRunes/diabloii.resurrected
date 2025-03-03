@@ -27,10 +27,10 @@ builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddHttpClient();
 builder.UseRequestRouter(_ => "backend")
-    .AddGenericHttpSender("backend", (options, _) =>
-    {
-        options.BaseAddress = new Uri("http://localhost:5110/");
-        options.Path = "api";
-    });
+	.AddGenericHttpSender("backend", (options, _) =>
+	{
+		options.BaseAddress = new Uri("http://localhost:5110/");
+		options.Path = "api";
+	});
 
 await builder.Build().RunAsync();

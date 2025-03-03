@@ -5,6 +5,7 @@
 @using RuneGlossary.Resurrected.WASM.Controls.Dialog
 @using RuneGlossary.Resurrected.WASM.Services
 @using STrain
+@using System.Diagnostics.CodeAnalysis
 
 @inject IJSRuntime JSRuntime;
 @inject IRuneService RuneService;
@@ -124,6 +125,7 @@
 
 	}
 
+	[ExcludeFromCodeCoverage]
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		if (CharacterService.Current is not null)
