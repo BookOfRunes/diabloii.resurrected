@@ -11,7 +11,7 @@ using System.Diagnostics.CodeAnalysis;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace RuneGlossary.Resurrected.Test.Unit
+namespace RuneGlossary.Resurrected.Test.Unit.Backend
 {
 	public class RuneWordPerformersTest : IDisposable
 	{

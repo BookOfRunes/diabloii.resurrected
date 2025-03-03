@@ -1,7 +1,7 @@
 ﻿using RuneGlossary.Resurrected.Api;
 using Xunit;
 
-namespace RuneGlossary.Resurrected.Test.Unit
+namespace RuneGlossary.Resurrected.Test.Unit.Backend
 {
 	public class GetRuneWordsQueryValidatorTest
 	{
