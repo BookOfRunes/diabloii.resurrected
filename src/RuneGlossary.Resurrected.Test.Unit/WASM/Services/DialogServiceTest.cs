@@ -12,6 +12,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][DLS-001] - Show Dialog")]
+		[Trait("Feature", "DL - Dialog")]
 		public void DialogService_Show_ShowDialog()
 		{
 			// Arrange
@@ -25,6 +26,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][DLS-002] - Dismiss Dialog")]
+		[Trait("Feature", "DL - Dialog")]
 		public void DialogService_Show_DismissDialog()
 		{
 			// Arrange
@@ -40,6 +42,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][DLS-003] - Accept Dialog")]
+		[Trait("Feature", "DL - Dialog")]
 		public async Task DialogService_Show_AcceptDialog()
 		{
 			// Arrange
@@ -55,6 +58,7 @@ namespace RuneGlossary.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][DLS-004] - Invoke Accepted")]
+		[Trait("Feature", "DL - Dialog")]
 		public async Task DialogService_Show_InvokeAccepted()
 		{
 			// Arrange

@@ -1,7 +1,7 @@
 ﻿using RuneGlossary.Resurrected.Api;
 using Xunit;
 
-namespace RuneGlossary.Resurrected.Test.Unit
+namespace RuneGlossary.Resurrected.Test.Unit.Backend
 {
 	public class GetRuneWordsQueryValidatorTest
 	{
@@ -11,6 +11,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Fact(DisplayName = "[UNIT][GRWQV-001] - Empty item types")]
+		[Trait("Feature", "RW - Rune Word")]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_EmptyItemTypes()
 		{
 			// Arrange
@@ -25,6 +26,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-002] - Max level is 0 or above")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(0)]
 		[InlineData(-100)]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_MaxLevelIsZeroOrAbove(int level)
@@ -41,6 +43,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-003] - Max level is more than 99")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(100)]
 		[InlineData(100000)]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_MaxLevelIsMoreThan(int level)
@@ -57,6 +60,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-004] - Max level is between 1 and 99")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(1)]
 		[InlineData(99)]
 		[InlineData(50)]
@@ -74,6 +78,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-005] - SocketFrom is 0 or above")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(0)]
 		[InlineData(-100)]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_SocketFromIsZeroOrAbove(int socketFrom)
@@ -90,6 +95,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-006] - SocketFrom is more than 6")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(7)]
 		[InlineData(100)]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_SocketFromIsMoreThanSix(int socketFrom)
@@ -106,6 +112,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Fact(DisplayName = "[UNIT][GRWQV-007] - SocketFrom is less than SocketTo")]
+		[Trait("Feature", "RW - Rune Word")]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_SocketFromIsLessThanSocketTo()
 		{
 			// Arrange
@@ -120,6 +127,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-008] - SocketFrom is in range")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(1)]
 		[InlineData(6)]
 		[InlineData(3)]
@@ -137,6 +145,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-009] - SocketTo is 0 or above")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(0)]
 		[InlineData(-100)]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_SocketToIsZeroOrAbove(int socketTo)
@@ -153,6 +162,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-010] - SocketTo is more than 6")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(7)]
 		[InlineData(100)]
 		public async Task GetRuneWordsQueryValidator_ValidateAsync_SocketToIsMoreThanSix(int socketTo)
@@ -169,6 +179,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
 		}
 
 		[Theory(DisplayName = "[UNIT][GRWQV-011] - SocketTo is in range")]
+		[Trait("Feature", "RW - Rune Word")]
 		[InlineData(1)]
 		[InlineData(6)]
 		[InlineData(3)]

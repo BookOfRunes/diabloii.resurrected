@@ -11,7 +11,7 @@ using System.Diagnostics.CodeAnalysis;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace RuneGlossary.Resurrected.Test.Unit
+namespace RuneGlossary.Resurrected.Test.Unit.Backend
 {
     public class RuneWordPerformersTest : IDisposable
     {
@@ -29,7 +29,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
         private RuneWordPerformers CreateSUT()
         {
             var options = new DbContextOptionsBuilder<DatabaseContext>()
-                                .UseInMemoryDatabase(nameof(RuneWordPerformersTest))
+                                .UseInMemoryDatabase(Guid.NewGuid().ToString())
                                 .ConfigureWarnings(builder => builder.Ignore(InMemoryEventId.TransactionIgnoredWarning))
                                 .Options;
 
@@ -45,6 +45,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
         }
 
         [Fact(DisplayName = "[UNIT][GRWQ-001] - Get rune word information")]
+        [Trait("Feature", "RW - Rune Word")]
         public async Task RuneWordPerformers_GetRuneWordsQuery_GetInformation()
         {
             // Arrange
@@ -72,6 +73,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
         }
 
         [Fact(DisplayName = "[UNIT][GRWQ-002] - Filter by item type")]
+        [Trait("Feature", "RW - Rune Word")]
         public async Task RuneWordPerformers_GetRuneWordsQuery_FilterByItemType()
         {
             // Arrange
@@ -108,6 +110,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
         }
 
         [Fact(DisplayName = "[UNIT][GRWQ-002] - Filter by socket number")]
+        [Trait("Feature", "RW - Rune Word")]
         public async Task RuneWordPerformers_GetRuneWordsQuery_SocketNumber()
         {
             // Arrange
@@ -144,6 +147,7 @@ namespace RuneGlossary.Resurrected.Test.Unit
         }
 
         [Fact(DisplayName = "[UNIT][GRWQ-003] - Filter by level")]
+        [Trait("Feature", "RW - Rune Word")]
         public async Task RuneWordPerformers_GetRuneWordsQuery_ByLevel()
         {
             // Arrange

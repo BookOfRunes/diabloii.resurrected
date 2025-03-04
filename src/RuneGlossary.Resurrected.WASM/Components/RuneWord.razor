@@ -34,7 +34,7 @@
         <div class="description">
             @foreach (var statistic in Model.Statistics)
             {
-                @GetDescription(statistic);
+                <span data-testid="txtDescription">@GetDescription(statistic)</span>
             }
         </div>
     </div>

@@ -75,13 +75,13 @@
 			</div>
 			<div class="buttons">
 				<div>
-					<button @onclick="SelectArmors">Armors</button>
-					<button @onclick="SelectWeapons">Weapons</button>
+					<button @onclick="SelectArmors" data-testid="btnArmors">Armors</button>
+					<button @onclick="SelectWeapons" data-testid="btnWeapons">Weapons</button>
 				</div>
 				<div>
-					<button @onclick="GetAllAsync">All</button>
-					<button @onclick="GetUseableAsync">Usable</button>
-					<button @onclick="GetByFilterAsync">Filter</button>
+					<button @onclick="GetAllAsync" data-testid="btnAll">All</button>
+					<button @onclick="GetUseableAsync" data-testid="btnUseable">Usable</button>
+					<button @onclick="GetByFilterAsync" data-testid="btnFilter">Filter</button>
 				</div>
 			</div>
 		</div>
