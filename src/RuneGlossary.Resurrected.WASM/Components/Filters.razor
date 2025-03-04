@@ -63,13 +63,17 @@
 					</div>
 				</div>
 				<div class="subfilters">
-					<div class="sockets">
+					<div class="field">
 						<span class="label">Sockets:</span>
 						<div class="sockets__value">
 							<InputNumber min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketFrom)"></InputNumber>
 							<span>-</span>
 							<InputNumber min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketTo)"></InputNumber>
 						</div>
+					</div>
+					<div class="field">
+						<span class="label">Level:</span>
+						<InputNumber min="2" max="99" @bind-Value="@(CharacterService.Current.Filters.Level)"></InputNumber>
 					</div>
 				</div>
 			</div>
@@ -133,7 +137,7 @@
 	{
 		using (Loading.Show())
 		{
-			await RuneWordService.LoadAsync(CharacterService.Current!.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList(), CharacterService.Current.Filters.SocketFrom, CharacterService.Current.Filters.SocketTo, 99, default);
+			await RuneWordService.LoadAsync(CharacterService.Current!.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList(), CharacterService.Current.Filters.SocketFrom, CharacterService.Current.Filters.SocketTo, CharacterService.Current.Filters.Level, default);
 		}
 	}
 }
