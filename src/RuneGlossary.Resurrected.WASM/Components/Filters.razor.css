@@ -48,7 +48,7 @@ div.filters {
     grid-template-columns: 3fr 1fr;
 }
 
-div.sockets {
+div.field {
     display: grid;
     grid-template-rows: auto auto;
     grid-row-gap: var(--gap);
