@@ -51,8 +51,8 @@
 				<div class="level">
 					<input type="number" class="highlighted" @bind-value=@CharacterService.Current.Level min="1" max="99"/>
 					<div>
-						<img class="counter" src="/assets/increase.png" @onclick="Increase"/>
-						<img class="counter" src="/assets/decrease.png" @onclick="Decrease" />
+						<img data-testid="btnIncreaseLevel" class="counter" src="/assets/increase.png" @onclick="IncreaseLevel"/>
+						<img data-testid="btnDecreaseLevel" class="counter" src="/assets/decrease.png" @onclick="DecreaseLevel" />
 					</div>
 				</div>
 			</div>
@@ -94,17 +94,17 @@
 				</EditForm>
 		</div>
 		<div class="buttons">
-			<button @onclick="() => SaveAsync(CharacterService.Current)">Save</button>
+			<button data-testid="btnSave" @onclick="() => SaveAsync(CharacterService.Current!)">Save</button>
 			<div class="character-buttons">
-				<button @onclick="Add">Add</button>
-				<button @onclick="DeleteAsync">Delete</button>
+				<button data-testid="btnAdd" @onclick="Add">Add</button>
+				<button data-testid="btnDelete" @onclick="DeleteAsync">Delete</button>
 			</div>
 		</div>
 	</div>	
 </div>
 
 <Dialog Accepted=@AddAsync>
-	<AddCharacter/>
+	<AddCharacter data-testid="dlgAddCharacter"/>
 </Dialog>
 
 @code {
@@ -149,13 +149,13 @@
 		StateHasChanged();
 	}
 
-	private void Increase()
+	private void IncreaseLevel()
 	{
 		CharacterService.Current!.Level++;
 		StateHasChanged();
 	}
 
-	private void Decrease()
+	private void DecreaseLevel()
 	{
 		CharacterService.Current!.Level--;
 		StateHasChanged();
@@ -185,6 +185,6 @@
 
 	private async Task DeleteAsync()
 	{
-		await CharacterService.DeleteAsync(CharacterService.Current, default);
+		if (CharacterService.Current is not null) await CharacterService.DeleteAsync(CharacterService.Current, default);
 	}
 }

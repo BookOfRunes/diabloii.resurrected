@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RuneGlossary.Resurrected.Api;
 using RuneGlossary.Resurrected.Infrastructure.Entities;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RuneGlossary.Resurrected.Infrastructure
 {
@@ -194,6 +195,7 @@ namespace RuneGlossary.Resurrected.Infrastructure
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public class DatabaseContextFactory : IDesignTimeDbContextFactory<DatabaseContext>
     {
         public DatabaseContext CreateDbContext(string[] args)
