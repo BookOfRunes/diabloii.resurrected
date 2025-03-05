@@ -7,8 +7,8 @@
 
     div.main {
         display: grid;
-        grid-template-columns: 1fr 2.5fr;
-        grid-column-gap: var(--gap);
+        grid-template-rows: max-content 1fr;
+        grid-row-gap: var(--gap);
     }
 
     div.right {
@@ -30,4 +30,18 @@
 
     div.panel {
         overflow: visible;
+    }
+
+    div.content {
+        display: grid;
+        grid-template-columns: 1fr 2.5fr;
+        grid-column-gap: var(--gap);
+    }
+
+    div.header {
+        padding: var(--padding);
+
+        display: grid;
+
+        justify-items: center;
     }

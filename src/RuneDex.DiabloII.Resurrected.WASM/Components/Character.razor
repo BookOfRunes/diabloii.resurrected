@@ -22,7 +22,7 @@
 	}
 
 	function getWindowHeight() {
-		return window.innerHeight;
+		return document.getElementById("content").getBoundingClientRect().height;
 	}
 
 	function getFontSize(element) {
@@ -134,7 +134,7 @@
 			{
 				_fontSize = double.Parse((await JSRuntime.InvokeAsync<string>("getFontSize", _dataElement)).TrimEnd("px".ToCharArray()));
 			}
-			var window = await JSRuntime.InvokeAsync<int>("getWindowHeight");
+			var window = await JSRuntime.InvokeAsync<double>("getWindowHeight");
 			var index = await JSRuntime.InvokeAsync<int>("getHeight", _indexElement);
 			var data = await JSRuntime.InvokeAsync<int>("getHeight", _dataElement);
 			var bottom = await JSRuntime.InvokeAsync<int>("getHeight", _bottomElement);			

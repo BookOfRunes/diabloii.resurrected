@@ -3,7 +3,6 @@
 @using RuneDex.DiabloII.Resurrected.WASM.Services
 @using RuneDex.DiabloII.Resurrected.WASM.Components
 @using RuneDex.DiabloII.Resurrected.WASM.Controls
-@using RuneDex.DiabloII.Resurrected.WASM.Services
 
 @inject IRuneService RuneService;
 @inject ICharacterService CharacterService;
@@ -11,20 +10,25 @@
 @inject ILoading Loading;
 
 <div class="main">
-	<div class="panel">
-		<Character></Character>
+	<div class="panel header">
+		<img src="/assets/logo_1024x1024.png" height="48"/>
 	</div>
-	<div class="right">
+	<div id="content" class="content">
 		<div class="panel">
-			<Filters></Filters>
+			<Character></Character>
 		</div>
-		<div class="rune-words">
-			<Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize Items="RuneWordService.RuneWords.ToList()" Context="runeWord" OverscanCount="5">
-				<RuneWord Model="runeWord"
-						  Level="CharacterService.Current!.Level"
-						  Runes="RuneService.Runes.Where(r => r.Selected).Select(r => r.Id).ToList()"
-						  ItemTypes="CharacterService.Current.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList()"></RuneWord>
-			</Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize>
+		<div class="right">
+			<div class="panel">
+				<Filters></Filters>
+			</div>
+			<div class="rune-words">
+				<Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize Items="RuneWordService.RuneWords.ToList()" Context="runeWord" OverscanCount="5">
+					<RuneWord Model="runeWord"
+							  Level="CharacterService.Current!.Level"
+							  Runes="RuneService.Runes.Where(r => r.Selected).Select(r => r.Id).ToList()"
+							  ItemTypes="CharacterService.Current.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList()"></RuneWord>
+				</Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize>
+			</div>
 		</div>
 	</div>
 </div>
