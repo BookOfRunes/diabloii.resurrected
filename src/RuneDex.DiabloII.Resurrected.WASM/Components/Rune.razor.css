@@ -25,7 +25,6 @@ div.description-panel div.description{
     border-radius: 0.4rem;
     position: absolute;
     z-index: 10000;
-    bottom: 125%;
     left: 50%;
     margin-left: -60px;
     opacity: 0;
@@ -37,6 +36,14 @@ div.description-panel div.description{
     padding-bottom: 1rem;
     padding-left: 3rem;
     padding-right: 3rem;
+}
+
+div.description[position=below] {
+    top: 100%;
+}
+
+div.description[position=above] {
+    bottom: 100%;
 }
 
 div.description-panel:hover div.description {
