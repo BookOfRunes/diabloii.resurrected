@@ -53,6 +53,7 @@ jobs:
         uses: mihben/actions-repository/.github/actions/dotnet/publish/wasm@feature/dotnet-publish
         with:
           working-directory: src/RuneDex.DiabloII.Resurrected.WASM
+          project: RuneDex.DiabloII.Resurrected.WASM
           token: ${{ secrets.GITHUB_TOKEN }}
           target_image: runedex/diablo2/resurrected/client
           target_version: ${{ needs.get-version.outputs.version }}
