@@ -6,10 +6,11 @@ on:
       - "v*.*.*"
 
 jobs:
-  publish:
+  get-version:
     runs-on: ubuntu-latest
 
-    permissions: write-all
+    outputs:
+      version: ${{ steps.version.outputs.TARGET_VERSION }}
 
     steps:
       - name: Checkout Code
@@ -21,14 +22,50 @@ jobs:
         id: version
         run: echo "TARGET_VERSION=$(echo ${{ github.ref_name }} | cut -c 2-)" >> $GITHUB_OUTPUT
 
+  publish-backend:
+    needs: [get-version]
+    runs-on: ubuntu-latest
+
+    permissions: write-all
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
       - name: Publish
-        run: dotnet publish src/RuneDex.DiabloII.Resurrected/RuneDex.DiabloII.Resurrected.csproj --configuration Release --output artifacts/backend/
+        run: dotnet publish src/RuneDex.DiabloII.Resurrected/RuneDex.DiabloII.Resurrected.csproj --configuration Release --output artifacts/
 
       - name: Download Dockerfile
         run: |
           wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/webapi/Dockerfile
           sed -i 's/#WEBAPI_DLL#/RuneDex.DiabloII.Resurrected.dll/g' Dockerfile
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u mihben@gmail.com --password-stdin
-          docker buildx build --tag ghcr.io/runedex/diablo2/resurrected/backend:${{ steps.version.outputs.TARGET_VERSION }} .
-          docker push ghcr.io/runedex/diablo2/resurrected/backend:${{ steps.version.outputs.TARGET_VERSION }}
-        working-directory: artifacts/backend/
+          docker buildx build --tag ghcr.io/runedex/diablo2/resurrected/backend:${{ needs.get-version.outputs.version }} .
+          docker push ghcr.io/runedex/diablo2/resurrected/backend:${{ needs.get-version.outputs.version }}
+        working-directory: artifacts/
+
+  publish-client:
+    needs: [get-version]
+    runs-on: ubuntu-latest
+
+    permissions: write-all
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - name: Publish
+        run: dotnet publish src/RuneDex.DiabloII.Resurrected.WASM/RuneDex.DiabloII.Resurrected.WASM.csproj --configuration Release --output artifacts/
+
+      - name: Download Dockerfile
+        run: |
+          wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/wasm/Dockerfile
+          wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/wasm/nginx.conf
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u mihben@gmail.com --password-stdin
+          docker buildx build --tag ghcr.io/runedex/diablo2/resurrected/client:${{ needs.get-version.outputs.version }} .
+          docker push ghcr.io/runedex/diablo2/resurrected/client:${{ needs.get-version.outputs.version }}
+        working-directory: artifacts/
