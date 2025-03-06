@@ -17,7 +17,7 @@ jobs:
 
       - name: Get Version
         id: version
-        run: echo "TARGET_VERSION=${{ github.ref_name }} | cut -c 1-" >> $GITHUB_OUTPUT
+        run: echo "TARGET_VERSION=${{ github.ref_name }} | cut -c 2-" >> $GITHUB_OUTPUT
 
       - name: Write Version
         run: echo ${{ steps.version.outputs.TARGET_VERSION }}
