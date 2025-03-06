@@ -9,14 +9,15 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-    env:
-      VERSION: ${{ github.ref_name }}
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-tags: true
 
+      - name: Get Version
+        id: version
+        run: echo "TARGET_VERSION=${{ github.ref_name }} | cut -c 1-" >> $GITHUB_OUTPUT
+
       - name: Write Version
-        run: echo $VERSION
+        run: echo ${{ steps.version.outputs.TARGET_VERSION }}
