@@ -14,8 +14,8 @@ jobs:
       - name: Calculate Version
         id: version
         run: |
-          echo git describe --tag
-          echo git describe --tag | cut -c 1-
+          git describe --tag
+          git describe --tag | cut -c 1-
           echo "VERSION_NUMBER=git describe --tag | cut -c 1-" >> GITHUB_OUTPUT
 
       - name: Write Version
