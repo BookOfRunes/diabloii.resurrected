@@ -10,17 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      version: ${{ steps.version.outputs.TARGET_VERSION }}
+      version: ${{ steps.version.outputs.version }}
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          fetch-tags: true
 
-      - name: Get Version
+      - name: Execute
         id: version
-        run: echo "TARGET_VERSION=$(echo ${{ github.ref_name }} | cut -c 2-)" >> $GITHUB_OUTPUT
+        uses: mihben/actions-repository/.github/actions/get-version@feature/dotnet-publish
 
   publish-backend:
     needs: [get-version]
@@ -31,20 +29,15 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/publish/webapi@feature/dotnet-publish
         with:
-          fetch-tags: true
-
-      - name: Publish
-        run: dotnet publish src/RuneDex.DiabloII.Resurrected/RuneDex.DiabloII.Resurrected.csproj --configuration Release --output artifacts/
-
-      - name: Download Dockerfile
-        run: |
-          wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/webapi/Dockerfile
-          sed -i 's/#WEBAPI_DLL#/RuneDex.DiabloII.Resurrected.dll/g' Dockerfile
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u mihben@gmail.com --password-stdin
-          docker buildx build --tag ghcr.io/runedex/diablo2/resurrected/backend:${{ needs.get-version.outputs.version }} .
-          docker push ghcr.io/runedex/diablo2/resurrected/backend:${{ needs.get-version.outputs.version }}
-        working-directory: artifacts/
+          working-directory: src/RuneDex.DiabloII.Resurrected
+          project: RuneDex.DiabloII.Resurrected
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_image: runedex/diablo2/resurrected/backend
+          target_version: ${{ needs.get-version.outputs.version }}
 
   publish-client:
     needs: [get-version]
@@ -55,17 +48,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/publish/wasm@feature/dotnet-publish
         with:
-          fetch-tags: true
-
-      - name: Publish
-        run: dotnet publish src/RuneDex.DiabloII.Resurrected.WASM/RuneDex.DiabloII.Resurrected.WASM.csproj --configuration Release --output artifacts/
-
-      - name: Download Dockerfile
-        run: |
-          wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/wasm/Dockerfile
-          wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/wasm/nginx.conf
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u mihben@gmail.com --password-stdin
-          docker buildx build --tag ghcr.io/runedex/diablo2/resurrected/client:${{ needs.get-version.outputs.version }} .
-          docker push ghcr.io/runedex/diablo2/resurrected/client:${{ needs.get-version.outputs.version }}
-        working-directory: artifacts/
+          working-directory: src/RuneDex.DiabloII.Resurrected.WASM
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_image: runedex/diablo2/resurrected/client
+          target_version: ${{ needs.get-version.outputs.version }}
