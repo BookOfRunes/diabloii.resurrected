@@ -26,6 +26,7 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/webapi/Dockerfile
           sed -i 's/#WEBAPI_DLL#/RuneDex.DiabloII.Resurrected.dll/g' Dockerfile
+          echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
           docker buildx build --tag ghcr.io/runedex/diablo2_resurrected_backend:${{ steps.version.outputs.TARGET_VERSION }} .
           docker push ghcr.io/runedex/diablo2_resurrected_backend:${{ steps.version.outputs.TARGET_VERSION }}
         working-directory: artifacts/backend/
