@@ -17,7 +17,7 @@ jobs:
 
       - name: Get Version
         id: version
-        run: echo "TARGET_VERSION=$(${{ github.ref_name }} | cut -c 2-)" >> $GITHUB_OUTPUT
+        run: echo "TARGET_VERSION=$(echo ${{ github.ref_name }} | cut -c 2-)" >> $GITHUB_OUTPUT
 
       - name: Publish
         run: dotnet publish src/RuneDex.DiabloII.Resurrected/RuneDex.DiabloII.Resurrected.csproj --configuration Release --output artifacts/backend/
