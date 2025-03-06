@@ -16,6 +16,7 @@ jobs:
       - name: Calculate Version
         id: version
         run: |
+          git fetch --prune --unshallow --tags
           git describe --tag
           git describe --tag | cut -c 1-
           echo "VERSION_NUMBER=git describe --tag | cut -c 1-" >> GITHUB_OUTPUT
