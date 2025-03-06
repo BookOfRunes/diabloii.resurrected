@@ -16,3 +16,4 @@ jobs:
         uses: mihben/actions-repository/.github/actions/dotnet/release@feature/dotnet-publish
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          branch: feature/basic-view
