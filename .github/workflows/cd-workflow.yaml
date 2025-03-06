@@ -26,5 +26,5 @@ jobs:
         run: |
           wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/webapi/Dockerfile
           sed -i 's/#WEBAPI_DLL#/RuneDex.DiabloII.Resurrected.dll/g' Dockerfile
-          cat Dockerfile
+          docker buildx build -tag ghcr.io/RuneDex/diablo2_resurrected_backend:${{ steps.version.outputs.VERSION }}
         working-directory: artifacts/backend/
