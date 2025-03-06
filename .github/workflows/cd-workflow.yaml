@@ -25,6 +25,6 @@ jobs:
       - name: Create Docker Image
         run: |
           wget https://raw.githubusercontent.com/mihben/actions-repository/refs/heads/feature/dotnet-publish/dockerfiles/dotnet/webapi/Dockerfile
-          sed -i 's/#WEBAPI_DLL#/RuneDex.DiabloII.Resurrected.dll/g' *
+          sed -i 's/#WEBAPI_DLL#/RuneDex.DiabloII.Resurrected.dll/g' Dockerfile
           cat Dockerfile
         working-directory: artifacts/backend/
