@@ -1,4 +1,5 @@
 ﻿using AutoBogus;
+using Bogus;
 using RuneDex.DiabloII.Resurrected.WASM.Controls.Dialog;
 using Xunit;
 
@@ -17,12 +18,13 @@ namespace RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Services
 		{
 			// Arrange
 			var sut = CreateSUT();
+			var key = new Faker().Random.String();
 
 			// Act
-			sut.Show();
+			sut.Show(key);
 
 			// Assert
-			Assert.True(sut.Visible);
+			Assert.True(sut[key]);
 		}
 
 		[Fact(DisplayName = "[UNIT][DLS-002] - Dismiss Dialog")]
@@ -31,14 +33,15 @@ namespace RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Services
 		{
 			// Arrange
 			var sut = CreateSUT();
+			var key = new Faker().Random.String();
 
-			sut.Show();
+			sut.Show(key);
 
 			// Act
 			sut.Dismiss();
 
 			// Assert
-			Assert.False(sut.Visible);
+			Assert.False(sut[key]);
 		}
 
 		[Fact(DisplayName = "[UNIT][DLS-003] - Accept Dialog")]
@@ -47,14 +50,15 @@ namespace RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Services
 		{
 			// Arrange
 			var sut = CreateSUT();
+			var key = new Faker().Random.String();
 
-			sut.Show();
+			sut.Show(key);
 
 			// Act
 			await sut.AcceptAsync<object>(null);
 
 			// Assert
-			Assert.False(sut.Visible);
+			Assert.False(sut[key]);
 		}
 
 		[Fact(DisplayName = "[UNIT][DLS-004] - Invoke Accepted")]

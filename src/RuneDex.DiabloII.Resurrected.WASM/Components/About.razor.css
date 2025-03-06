@@ -1,0 +1,30 @@
+﻿div.main {
+    display: grid;
+    grid-template-rows: max-content max-content max-content;
+    grid-row-gap: var(--padding-large);
+}
+
+div.content {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: var(--padding);
+}
+
+div.buttons {
+    justify-self: end;
+}
+
+img {
+    justify-self: center;
+}
+
+ul {
+    list-style-type: disc;
+
+    padding-left: var(--padding-large);
+}
+
+a {
+    color: var(--text);
+    text-decoration: underline;
+}

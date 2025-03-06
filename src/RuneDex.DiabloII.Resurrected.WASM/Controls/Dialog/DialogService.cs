@@ -2,39 +2,41 @@
 {
 	public interface IDialogService
 	{
-		void Show();
+		void Show(string key);
 		Task AcceptAsync<T>(T? result);
 		void Dismiss();
 	}
 
 	public class DialogService : IDialogService
 	{
-		private bool _visible;
+		private string? _visibleKey;
 
 		public Func<object?, Task> Accepted { get; set; } = (_) => Task.CompletedTask;
 
-		public bool Visible
+		public bool this[string key]
 		{
-			get { return _visible; }
-			set { _visible = value; Changed?.Invoke(this, EventArgs.Empty); }
+			get { return _visibleKey == key; }
 		}
 
 		public event EventHandler<EventArgs>? Changed;
 
 		public async Task AcceptAsync<T>(T? result)
 		{
-			Visible = false;
+			_visibleKey = null;
+			Changed?.Invoke(this, EventArgs.Empty);
 			await Accepted(result);
 		}
 
 		public void Dismiss()
 		{
-			Visible = false;
+			_visibleKey = null;
+			Changed?.Invoke(this, EventArgs.Empty);
 		}
 
-		public void Show()
+		public void Show(string key)
 		{
-			Visible = true;
+			_visibleKey = key;
+			Changed?.Invoke(this, EventArgs.Empty);
 		}
 	}
 }

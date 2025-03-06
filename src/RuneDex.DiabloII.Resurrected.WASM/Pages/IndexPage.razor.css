@@ -39,9 +39,21 @@
     }
 
     div.header {
-        padding: var(--padding);
+        padding: var(--padding-extra);
 
         display: grid;
+        grid-template-rows: auto auto;
 
         justify-items: center;
     }
+
+    div.menu {
+        display: grid;
+        grid-auto-flow: column;
+
+        justify-items: end;
+    }
+
+span.menu__item {
+    cursor: pointer;
+}

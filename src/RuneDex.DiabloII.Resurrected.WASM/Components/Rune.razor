@@ -59,13 +59,9 @@
 
 	private async Task GetTooltipPosition(MouseEventArgs e)
 	{
-		var window = await JSRuntime.InvokeAsync<int>("getWindowHeight");
-		var toolTip = await JSRuntime.InvokeAsync<int>("getHeight", _tooltip);
+		var window = await JSRuntime.InvokeAsync<double>("getWindowHeight");
+		var toolTip = await JSRuntime.InvokeAsync<double>("getHeight", _tooltip);
 		var toolTipTop = await JSRuntime.InvokeAsync<double>("getTop", _tooltip);
-
-		Console.WriteLine($"Window: {window}");
-		Console.WriteLine($"Tooltip: {toolTip}");
-		Console.WriteLine($"Tooltip - Top: {toolTipTop}");
 
 		if (toolTip + toolTipTop > window) await JSRuntime.InvokeVoidAsync("setPositionAttribute", _tooltip, "above");
 	}

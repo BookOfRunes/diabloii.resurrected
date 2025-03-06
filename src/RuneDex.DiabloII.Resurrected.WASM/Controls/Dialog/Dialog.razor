@@ -1,6 +1,6 @@
 ﻿@inject DialogService DialogService
 
-@if(DialogService.Visible)
+@if(DialogService[Key])
 {
 	<div class="overlay" @onclick="Close">
 		<div class="content">
@@ -10,6 +10,9 @@
 }
 
 @code {
+	[Parameter]
+	public required string Key { get; set; }
+
 	[Parameter]
 	public required RenderFragment ChildContent { get; set; }
 

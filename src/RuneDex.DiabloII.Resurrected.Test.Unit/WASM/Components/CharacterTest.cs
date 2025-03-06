@@ -53,7 +53,7 @@ namespace RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Components
 			await cut.AddAsync();
 
 			// Assert
-			_dialogServiceMock.Verify(ds => ds.Show(), Times.Once());
+			_dialogServiceMock.Verify(ds => ds.Show("dlgAddCharacter"), Times.Once());
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-002] - Add First Character")]
@@ -69,7 +69,7 @@ namespace RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Components
 			await cut.InvokeAsync(() => _characterServiceMock.Raise(cs => cs.Loaded += null, EventArgs.Empty));
 
 			// Assert
-			_dialogServiceMock.Verify(ds => ds.Show(), Times.Once());
+			_dialogServiceMock.Verify(ds => ds.Show("dlgAddCharacter"), Times.Once());
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-003] - Increase Characer Level")]

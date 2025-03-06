@@ -8,7 +8,7 @@
 
 <EditForm OnValidSubmit="SaveAsync" EditContext="Context" >
 	<DataAnnotationsValidator/>
-	<div class="main">
+	<div class="main" @attributes=AdditionalAttributes>
 		<div class="text">
 			<span class="class">@Class.ToString()</span>
 			<span class="description">@_descriptions[Class]</span>
@@ -32,7 +32,7 @@
 			<div class="field">
 				<div class="label">Level <ValidationMessage For="@(() => Level)" /></div>
 				<InputNumber @bind-Value=@Level />
-				
+
 			</div>
 		</div>
 		<div class="buttons">
@@ -64,6 +64,9 @@
 	[Range(1, 99, ErrorMessage = "(Must be between 1 and 99)")]
 	[SupplyParameterFromForm]
 	public int Level { get; set; } = 1;
+
+	[Parameter(CaptureUnmatchedValues = true)]
+	public IDictionary<string, object>? AdditionalAttributes { get; set; }
 
 	private EditContext Context { get; set; } = null!;
 

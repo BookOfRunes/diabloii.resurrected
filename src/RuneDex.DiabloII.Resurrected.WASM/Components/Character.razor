@@ -103,7 +103,7 @@
 	</div>	
 </div>
 
-<Dialog Accepted=@AddAsync>
+<Dialog Key="dlgAddCharacter" Accepted=@AddAsync>
 	<AddCharacter data-testid="dlgAddCharacter"/>
 </Dialog>
 
@@ -169,7 +169,7 @@
 
 	private void Add()
 	{
-		DialogService.Show();
+		DialogService.Show("dlgAddCharacter");
 	}
 
 	private async Task AddAsync(object? result)
