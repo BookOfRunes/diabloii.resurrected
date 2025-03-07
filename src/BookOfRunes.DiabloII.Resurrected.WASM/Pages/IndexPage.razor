@@ -1,0 +1,66 @@
+﻿@page "/"
+@using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog
+@using BookOfRunes.DiabloII.Resurrected.WASM.Controls.LoadingScreen
+@using BookOfRunes.DiabloII.Resurrected.WASM.Services
+@using RuneDex.DiabloII.Resurrected.WASM.Components
+@using RuneDex.DiabloII.Resurrected.WASM.Controls
+@using RuneDex.DiabloII.Resurrected.WASM.Controls.Dialog
+@using RuneDex.DiabloII.Resurrected.WASM.Controls.LoadingScreen
+@using RuneDex.DiabloII.Resurrected.WASM.Services
+
+@inject IRuneService RuneService;
+@inject ICharacterService CharacterService;
+@inject IRuneWordService RuneWordService;
+@inject ILoading Loading;
+@inject IDialogService DialogService
+
+<div class="main">
+	<div class="panel header">
+		<img src="/assets/logo_1024x1024.png" height="48"/>
+		<div class="menu">
+			<span data-testid="mniAbout" class="menu__item about" @onclick="ShowAbout">About</span>
+		</div>
+	</div>
+	<div id="content" class="content">
+		<div class="panel">
+			<Character></Character>
+		</div>
+		<div class="right">
+			<div class="panel">
+				<Filters></Filters>
+			</div>
+			<div class="rune-words">
+				<Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize Items="RuneWordService.RuneWords.ToList()" Context="runeWord" OverscanCount="5">
+					<RuneWord Model="runeWord"
+					Level="CharacterService.Current!.Level"
+					Runes="RuneService.Runes.Where(r => r.Selected).Select(r => r.Id).ToList()"
+					ItemTypes="CharacterService.Current.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList()"></RuneWord>
+				</Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize>
+			</div>
+		</div>
+	</div>
+</div>
+
+<Dialog Key="dlgAbout">
+	<About></About>
+</Dialog>
+
+@code {
+	protected override async Task OnInitializedAsync()
+	{
+		using (Loading.Show())
+		{
+			await RuneService.LoadAsync(default);
+			await CharacterService.LoadAsync(default);
+		}
+
+		CharacterService.Changed += (_, __) => StateHasChanged();
+		RuneWordService.Loaded += (_, __) => StateHasChanged();
+		RuneService.Changed += (_, __) => StateHasChanged();
+	}
+
+	private void ShowAbout(MouseEventArgs args)
+	{
+		DialogService.Show("dlgAbout");
+	}
+}

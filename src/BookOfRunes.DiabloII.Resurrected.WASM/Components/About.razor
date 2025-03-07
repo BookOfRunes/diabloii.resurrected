@@ -1,0 +1,29 @@
+﻿@using System.Reflection
+@using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog
+@using RuneDex.DiabloII.Resurrected.WASM.Controls.Dialog
+
+@inject IDialogService DialogService;
+
+<div class="main">
+	<img src="/assets/logo_1024x1024.png" height="48"/>
+
+	<div class="content">
+		<span>Version: @GetVersion()</span>
+		<span>Links:</span>
+		<ul >
+			<li><a href="https://github.com/RuneDex/diabloii.resurrected/releases" target="_blank">Release Notes</a></li>
+			<li><a href="https://github.com/RuneDex/diabloii.resurrected/issues" target="_blank">Issue Tracker</a></li>
+		</ul>
+	</div>
+
+	<div class="buttons">
+		<button @onclick="() => DialogService.Dismiss()">Close</button>
+	</div>
+</div>
+
+@code {
+	public string GetVersion()
+	{
+		return Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()!.InformationalVersion;
+	}
+}
