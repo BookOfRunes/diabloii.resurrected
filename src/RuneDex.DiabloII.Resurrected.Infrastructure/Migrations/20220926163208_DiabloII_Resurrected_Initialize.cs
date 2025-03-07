@@ -435,7 +435,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
 				new("+15 Life After Each Demon Kill", null)
 			}, "https://diablo2.wiki.fextralife.com/Chaos");
 
-		public static RuneWordEnumeration CrescentMoon => new(10, "CrescentMoon", 47, new List<RuneEnumeration> { RuneEnumeration.Shael, RuneEnumeration.Um, RuneEnumeration.Tir },
+		public static RuneWordEnumeration CrescentMoon => new(10, "Crescent Moon", 47, new List<RuneEnumeration> { RuneEnumeration.Shael, RuneEnumeration.Um, RuneEnumeration.Tir },
 			new List<ItemTypeEnumeration> { ItemTypeEnumeration.Axe, ItemTypeEnumeration.Polearm, ItemTypeEnumeration.Sword },
 			new List<Statistic>
 			{
@@ -448,7 +448,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
 				new("25% Chance of Open Wounds", null),
 				new("+9-11 Magic Absorb (varies)", null),
 				new("+2 To Mana After Each Kill", null),
-				new("Level 18 Summon {{{}} (30 Charges)", SkillEnumeration.SummonSpiritWolf)
+				new("Level 18 Summon {skill} (30 Charges)", SkillEnumeration.SummonSpiritWolf)
 			}, "https://diablo2.wiki.fextralife.com/Crescent+Moon+(Runeword)");
 
 		public static RuneWordEnumeration Death => new(11, "Death", 55, new List<RuneEnumeration> { RuneEnumeration.Hel, RuneEnumeration.El, RuneEnumeration.Vex, RuneEnumeration.Ort, RuneEnumeration.Gul },
@@ -754,7 +754,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
 				new("+10-15 Life After Each Kill (varies)", null)
 			}, "https://diablo2.wiki.fextralife.com/Grief");
 
-		public static RuneWordEnumeration HandOfJustice => new(29, "HandOfJustice", 67, new List<RuneEnumeration> { RuneEnumeration.Sur, RuneEnumeration.Cham, RuneEnumeration.Lo, RuneEnumeration.Amn, RuneEnumeration.Lo },
+		public static RuneWordEnumeration HandOfJustice => new(29, "Hand of Justice", 67, new List<RuneEnumeration> { RuneEnumeration.Sur, RuneEnumeration.Cham, RuneEnumeration.Lo, RuneEnumeration.Amn, RuneEnumeration.Lo },
 			_rangedWeapons.Concat(_meleeWeapons),
 			new List<Statistic>
 			{
