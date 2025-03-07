@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -20,5 +20,9 @@
     <ProjectReference Include="..\RuneDex.DiabloII.Resurrected.Application\RuneDex.DiabloII.Resurrected.Application.csproj" />
     <ProjectReference Include="..\RuneDex.DiabloII.Resurrected.Infrastructure\RuneDex.DiabloII.Resurrected.Infrastructure.csproj" />
   </ItemGroup>
+
+	<PropertyGroup>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+	</PropertyGroup>
 
 </Project>

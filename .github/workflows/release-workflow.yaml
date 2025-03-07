@@ -1,0 +1,20 @@
+name: Release Pipeline
+run-name: Release
+
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/release@feature/dotnet-publish
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          branch: develop

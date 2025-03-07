@@ -31,7 +31,9 @@ namespace RuneDex.DiabloII.Resurrected.Application.Performers
 															&& rw.Level <= query.MaxLevel
 															&& rw.ItemTypes.Any(it => query.ItemTypes.Contains(it.Id)))
 												.OrderBy(rw => rw.Level)
+												.AsSplitQuery()
 											.ToListAsync(cancellationToken);
+
 
 			return runeWords.AsResult();
 		}

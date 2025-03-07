@@ -7,7 +7,8 @@
   </PropertyGroup>
 
 	<PropertyGroup>
-		<InformationalVersion>1.0.0-dev</InformationalVersion>
+		<InformationalVersion>$(APPVERSION)</InformationalVersion>
+		<Version>$(APPVERSION)</Version>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -25,5 +26,9 @@
   <ItemGroup>
     <ProjectReference Include="..\RuneDex.DiabloII.Resurrected.Api\RuneDex.DiabloII.Resurrected.Api.csproj" />
   </ItemGroup>
+
+	<PropertyGroup>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+	</PropertyGroup>
 
 </Project>

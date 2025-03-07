@@ -1,0 +1,60 @@
+name: CD Pipeline
+run-name: Publish ${{ github.ref_name }}
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  get-version:
+    runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        id: version
+        uses: mihben/actions-repository/.github/actions/get-version@feature/dotnet-publish
+
+  publish-backend:
+    needs: [get-version]
+    runs-on: ubuntu-latest
+
+    permissions: write-all
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/publish/webapi@feature/dotnet-publish
+        with:
+          working-directory: src/RuneDex.DiabloII.Resurrected
+          project: RuneDex.DiabloII.Resurrected
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_image: runedex/diablo2/resurrected/backend
+          target_version: ${{ needs.get-version.outputs.version }}
+
+  publish-client:
+    needs: [get-version]
+    runs-on: ubuntu-latest
+
+    permissions: write-all
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute
+        uses: mihben/actions-repository/.github/actions/dotnet/publish/wasm@feature/dotnet-publish
+        with:
+          working-directory: src/RuneDex.DiabloII.Resurrected.WASM
+          project: RuneDex.DiabloII.Resurrected.WASM
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target_image: runedex/diablo2/resurrected/client
+          target_version: ${{ needs.get-version.outputs.version }}
