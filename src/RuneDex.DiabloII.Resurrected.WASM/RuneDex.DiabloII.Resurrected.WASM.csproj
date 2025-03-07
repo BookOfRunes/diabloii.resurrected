@@ -27,4 +27,8 @@
     <ProjectReference Include="..\RuneDex.DiabloII.Resurrected.Api\RuneDex.DiabloII.Resurrected.Api.csproj" />
   </ItemGroup>
 
+	<PropertyGroup>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+	</PropertyGroup>
+
 </Project>
