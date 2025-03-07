@@ -1,8 +1,9 @@
-name: release
+name: Release Pipeline
 run-name: Release
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [develop]
 
 jobs:
   release:
