@@ -21,4 +21,9 @@
     <ProjectReference Include="..\RuneDex.DiabloII.Resurrected.Infrastructure\RuneDex.DiabloII.Resurrected.Infrastructure.csproj" />
   </ItemGroup>
 
+	<PropertyGroup>
+	    <InformationalVersion>$(APPVERSION)</InformationalVersion>
+	    <Version>$(APPVERSION)</Version>		
+	</PropertyGroup>	
+
 </Project>
