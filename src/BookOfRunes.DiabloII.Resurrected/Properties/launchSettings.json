@@ -1,6 +1,6 @@
 {
     "profiles": {
-        "RuneDex.DiabloII.Resurrected": {
+        "BookOfRunes.DiabloII.Resurrected": {
             "commandName": "Project",
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"

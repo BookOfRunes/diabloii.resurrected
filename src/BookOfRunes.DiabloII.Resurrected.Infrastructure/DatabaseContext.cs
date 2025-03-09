@@ -203,7 +203,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Infrastructure
 		public DatabaseContext CreateDbContext(string[] args)
 		{
 			var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
-			optionsBuilder.UseNpgsql("Host=mihben.work;Username=postgres;Password=AaZ9SGvNyEjsBuzc;Database=runedex-migration");
+			optionsBuilder.UseNpgsql("Host=mihben.work;Username=postgres;Password=AaZ9SGvNyEjsBuzc;Database=bookofrunes-migration");
 
 			return new DatabaseContext(optionsBuilder.Options);
 		}

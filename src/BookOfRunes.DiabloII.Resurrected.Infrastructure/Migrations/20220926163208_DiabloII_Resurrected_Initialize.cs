@@ -4,7 +4,7 @@ using STrain.Core.Enumerations;
 
 #nullable disable
 
-namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
+namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Migrations
 {
 	public partial class Initialize : Migration
 	{

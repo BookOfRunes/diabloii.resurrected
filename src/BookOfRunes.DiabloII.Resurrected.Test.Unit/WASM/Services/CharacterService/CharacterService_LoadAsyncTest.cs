@@ -3,10 +3,10 @@ using BookOfRunes.DiabloII.Resurrected.Api;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using Moq;
 using Newtonsoft.Json;
-using RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using Xunit;
 
-namespace RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Services
+namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 {
 	public partial class CharacterServiceTest
 	{

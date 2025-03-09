@@ -9,13 +9,13 @@ using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Moq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using STrain;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Services
+namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 {
 	public partial class CharacterServiceTest
 	{

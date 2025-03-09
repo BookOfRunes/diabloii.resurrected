@@ -7,9 +7,9 @@ using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
-using RuneDex.DiabloII.Resurrected.WASM.Components;
-using RuneDex.DiabloII.Resurrected.WASM.Models;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
+using BookOfRunes.DiabloII.Resurrected.WASM.Components;
+using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components

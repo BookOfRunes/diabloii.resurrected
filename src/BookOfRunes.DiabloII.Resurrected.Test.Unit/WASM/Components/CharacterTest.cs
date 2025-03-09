@@ -7,8 +7,8 @@ using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 using Moq;
-using RuneDex.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
-using RuneDex.DiabloII.Resurrected.WASM.Components;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
+using BookOfRunes.DiabloII.Resurrected.WASM.Components;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components

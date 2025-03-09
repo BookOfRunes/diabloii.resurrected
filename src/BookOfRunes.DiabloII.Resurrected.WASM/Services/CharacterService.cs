@@ -7,7 +7,7 @@ using Newtonsoft.Json.Converters;
 using STrain;
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("RuneDex.DiabloII.Resurrected.Test.Unit")]
+[assembly: InternalsVisibleTo("BookOfRunes.DiabloII.Resurrected.Test.Unit")]
 namespace BookOfRunes.DiabloII.Resurrected.WASM.Services
 {
 	public interface ICharacterService

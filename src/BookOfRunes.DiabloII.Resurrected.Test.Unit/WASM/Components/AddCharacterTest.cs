@@ -1,11 +1,11 @@
 ﻿using Bogus;
+using BookOfRunes.DiabloII.Resurrected.WASM.Components;
 using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using Bunit;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using RuneDex.DiabloII.Resurrected.WASM.Components;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
@@ -64,7 +64,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 			await cut.Find("[data-testid=btnSave]").ClickAsync(new MouseEventArgs());
 
 			// Assert
-			_dialogServiceMock.Verify(ds => ds.AcceptAsync(It.Is<Character>(c => c.Class.Equals(@class)
+			_dialogServiceMock.Verify(ds => ds.AcceptAsync(It.Is<Resurrected.WASM.Models.Character>(c => c.Class.Equals(@class)
 																										&& c.Name.Equals(name)
 																										&& c.Level.Equals(level))), Times.Once());
 		}

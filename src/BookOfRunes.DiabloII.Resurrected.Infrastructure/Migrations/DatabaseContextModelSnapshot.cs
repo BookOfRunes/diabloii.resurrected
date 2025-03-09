@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
+namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
@@ -23,7 +23,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.ClassEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.ClassEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("classes", "diabloii.resurrected");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.ItemTypeEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.ItemTypeEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,7 +66,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("item_types", "diabloii.resurrected");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -102,7 +102,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("Runes");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneRuneWordSwitchEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneRuneWordSwitchEntity", b =>
                 {
                     b.Property<int>("rune_id")
                         .HasColumnType("integer");
@@ -117,7 +117,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("rune_words_runes_switch", "diabloii.resurrected");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -145,7 +145,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("rune_words", "diabloii.resurrected");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneWordItemTypeSwitchEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneWordItemTypeSwitchEntity", b =>
                 {
                     b.Property<int>("item_type_id")
                         .HasColumnType("integer");
@@ -160,7 +160,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("rune_words_item_types_switch", "diabloii.resurrected");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.SkillEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.SkillEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -189,7 +189,7 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("skills", "diabloii.resurrected");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.StatisticEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.StatisticEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -213,16 +213,16 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.ToTable("statistics", "diabloii.resurrected");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneRuneWordSwitchEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneRuneWordSwitchEntity", b =>
                 {
-                    b.HasOne("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneEntity", "Rune")
+                    b.HasOne("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneEntity", "Rune")
                         .WithMany("RuneWordSwitch")
                         .HasForeignKey("rune_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_runes_rune_words");
 
-                    b.HasOne("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", "RuneWord")
+                    b.HasOne("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", "RuneWord")
                         .WithMany("RuneSwitch")
                         .HasForeignKey("rune_word_id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -234,16 +234,16 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.Navigation("RuneWord");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneWordItemTypeSwitchEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneWordItemTypeSwitchEntity", b =>
                 {
-                    b.HasOne("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.ItemTypeEntity", "ItemType")
+                    b.HasOne("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.ItemTypeEntity", "ItemType")
                         .WithMany("ItemTypeSwitch")
                         .HasForeignKey("item_type_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_item_types_rune_words");
 
-                    b.HasOne("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", "RuneWord")
+                    b.HasOne("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", "RuneWord")
                         .WithMany("ItemTypeSwitch")
                         .HasForeignKey("rune_word_id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -255,9 +255,9 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.Navigation("RuneWord");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.StatisticEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.StatisticEntity", b =>
                 {
-                    b.HasOne("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", null)
+                    b.HasOne("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", null)
                         .WithMany("Statistics")
                         .HasForeignKey("rune_word_id")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -267,17 +267,17 @@ namespace RuneDex.DiabloII.Resurrected.Infrastructure.Migrations
                     b.Navigation("Skill");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.ItemTypeEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.ItemTypeEntity", b =>
                 {
                     b.Navigation("ItemTypeSwitch");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneEntity", b =>
                 {
                     b.Navigation("RuneWordSwitch");
                 });
 
-            modelBuilder.Entity("RuneDex.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", b =>
+            modelBuilder.Entity("BookOfRunes.DiabloII.Resurrected.Infrastructure.Entities.RuneWordEntity", b =>
                 {
                     b.Navigation("ItemTypeSwitch");
 
