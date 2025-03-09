@@ -1,0 +1,68 @@
+﻿@using BookOfRunes.DiabloII.Resurrected.WASM.Models
+
+@inject IJSRuntime JSRuntime;
+
+<script>
+	function getTop(element)
+	{
+		return element.getBoundingClientRect().top;
+	}
+
+	function setPositionAttribute(element, value)
+	{
+		return element.setAttribute("position", value);
+	}
+</script>
+
+<div class="description-panel" @onmouseover="GetTooltipPosition">
+	<div class="main @(Available ? "" : "unavailable")">
+		<img src="/assets/runes/@(Model.Name.ToLower()).webp"/>
+		<span class="rune">@Model.Name</span>
+	</div>
+
+	<div @ref=_tooltip class="description" position="below">
+		<div class="description-first-row">
+			<span class="rune description-name">@Model.Name</span>
+			<div class="specification">
+				<span class="label">Level:</span>
+				<span class="@(Available ? "" : "description-unavailable")">@Model.Level</span>
+			</div>
+		</div>
+		<div class="description-second-row">
+			<div class="specification">
+				<span class="label">Weapon:</span>
+				<span class="specification">@Model.InWeapon</span>
+			</div>
+			<div class="specification">
+				<span class="label">Body Armor:</span>
+				<span class="specification">@Model.InBodyArmor</span>
+			</div>
+			<div class="specification">
+				<span class="label">Helmet:</span>
+				<span class="specification">@Model.InHelmet</span>
+			</div>
+			<div class="specification">
+				<span class="label">Shield:</span>
+				<span class="specification">@Model.InShield</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+	private ElementReference _tooltip;
+
+	[Parameter]
+	public required Models.Rune Model { get; set; } = null!;
+	[Parameter]
+	public required bool Available { get; set; } = false;
+
+	private async Task GetTooltipPosition(MouseEventArgs e)
+	{
+		var window = await JSRuntime.InvokeAsync<double>("getWindowHeight");
+		var toolTip = await JSRuntime.InvokeAsync<double>("getHeight", _tooltip);
+		var toolTipTop = await JSRuntime.InvokeAsync<double>("getTop", _tooltip);
+
+		if (toolTip + toolTipTop > window) await JSRuntime.InvokeVoidAsync("setPositionAttribute", _tooltip, "above");
+	}
+}

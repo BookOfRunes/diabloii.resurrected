@@ -1,0 +1,21 @@
+{
+    "profiles": {
+        "BookOfRunes.DiabloII.Resurrected": {
+            "commandName": "Project",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "dotnetRunMessages": true,
+            "applicationUrl": "http://localhost:5110"
+        }
+    },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:40926",
+      "sslPort": 0
+    }
+  }
+}
