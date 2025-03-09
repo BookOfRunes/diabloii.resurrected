@@ -19,7 +19,7 @@ jobs:
 
       - name: Execute
         id: version
-        uses: mihben/actions-repository/.github/actions/get-version@feature/dotnet-publish
+        uses: mihben/actions-repository/.github/actions/get-version@main
 
   publish-backend:
     needs: [get-version]
@@ -32,12 +32,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Execute
-        uses: mihben/actions-repository/.github/actions/dotnet/publish/webapi@feature/dotnet-publish
+        uses: mihben/actions-repository/.github/actions/dotnet/publish/webapi@main
         with:
-          working-directory: src/RuneDex.DiabloII.Resurrected
-          project: RuneDex.DiabloII.Resurrected
+          working-directory: src/BookOfRunes.DiabloII.Resurrected
+          project: BookOfRunes.DiabloII.Resurrected
           token: ${{ secrets.GITHUB_TOKEN }}
-          target_image: runedex/diablo2/resurrected/backend
+          target_image: bookofrunes/diablo2/resurrected/backend
           target_version: ${{ needs.get-version.outputs.version }}
 
   publish-client:
@@ -51,10 +51,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Execute
-        uses: mihben/actions-repository/.github/actions/dotnet/publish/wasm@feature/dotnet-publish
+        uses: mihben/actions-repository/.github/actions/dotnet/publish/wasm@main
         with:
-          working-directory: src/RuneDex.DiabloII.Resurrected.WASM
-          project: RuneDex.DiabloII.Resurrected.WASM
+          working-directory: src/BookOfRunes.DiabloII.Resurrected.WASM
+          project: BookOfRunes.DiabloII.Resurrected.WASM
           token: ${{ secrets.GITHUB_TOKEN }}
-          target_image: runedex/diablo2/resurrected/client
+          target_image: BookOfRunes/diablo2/resurrected/client
           target_version: ${{ needs.get-version.outputs.version }}
