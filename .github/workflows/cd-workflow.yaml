@@ -56,5 +56,5 @@ jobs:
           working-directory: src/BookOfRunes.DiabloII.Resurrected.WASM
           project: BookOfRunes.DiabloII.Resurrected.WASM
           token: ${{ secrets.GITHUB_TOKEN }}
-          target_image: BookOfRunes/diablo2/resurrected/client
+          target_image: bookofrunes/diablo2/resurrected/client
           target_version: ${{ needs.get-version.outputs.version }}
