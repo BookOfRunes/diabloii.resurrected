@@ -51,7 +51,7 @@
 				<span data-testid="spnName" class="highlighted">@(CharacterService.Current.Name)</span>
 				<span>Level:</span>
 				<div class="level">
-					<input type="number" class="highlighted" @bind-value=@CharacterService.Current.Level min="1" max="99"/>
+					<input data-testid="inpLevel" type="number" class="highlighted" @bind-value=@CharacterService.Current.Level min="1" max="99" />
 					<div>
 						<img data-testid="btnIncreaseLevel" class="counter" src="/assets/increase.png" @onclick="IncreaseLevel"/>
 						<img data-testid="btnDecreaseLevel" class="counter" src="/assets/decrease.png" @onclick="DecreaseLevel" />
