@@ -37,11 +37,11 @@
 	{
 		<div class="top">
 			<div class="class">
-				<div class="pager previous" @onclick="() => CharacterService.Previous()"/>
+				<div data-testid="btnPrevious" class="pager previous" @onclick="() => CharacterService.Previous()" />
 				<div @ref="_imageElement" class="image">
 					<img src="@($"/assets/classes/{CharacterService.Current.Class.ToString().ToLower()}.png")" @onmousewheel="OnMouseWheel" />
 				</div>
-				<div class="pager next" @onclick="() => CharacterService.Next()"/>
+				<div data-testid="btnNext" class="pager next" @onclick="() => CharacterService.Next()"/>
 			</div>
 			<div @ref="_indexElement" class="index">@(CharacterService.Index + 1)/@(CharacterService.Characters.Count())</div>
 		</div>
