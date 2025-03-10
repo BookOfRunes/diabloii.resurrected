@@ -16,16 +16,25 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Support
 		[BeforeScenario(Order = 0)]
 		public async Task WireupPlaywrightAsync()
 		{
+			var testContext = new TestContext();
 			var playwright = await Playwright.CreateAsync();
-			var browser = await playwright.Chromium.LaunchAsync();
+			var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+			{
+			});
 			var context = await browser.NewContextAsync(new BrowserNewContextOptions
 			{
-				BaseURL = "http://localhost:5000/"
+				BaseURL = "http://localhost:5000/",
+				ExtraHTTPHeaders = new Dictionary<string, string>
+				{
+					["run-id"] = testContext.RunId.ToString()
+				}
 			});
 
 			_context.ScenarioContainer.RegisterInstanceAs(await context.NewPageAsync());
 
 			_context.ScenarioContainer.RegisterTypeAs<IndexPageObject, IndexPageObject>();
+
+			_context.ScenarioContainer.RegisterInstanceAs(testContext);
 		}
 
 		[AfterScenario]

@@ -14,7 +14,7 @@
 <EditForm Model="CharacterService.Current">
     <div class="main">
         <div class="basics">
-            <span class="name">@Model.Name</span>
+            <span data-testid="spnRuneWord" class="name">@Model.Name</span>
             <div class="runes">
                 @foreach (var rune in Model.Runes)
                 {

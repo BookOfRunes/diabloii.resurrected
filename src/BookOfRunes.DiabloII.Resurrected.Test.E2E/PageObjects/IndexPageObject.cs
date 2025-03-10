@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using BookOfRunes.DiabloII.Resurrected.Test.E2E.Support;
 using Microsoft.Playwright;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
@@ -10,6 +11,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
 		private readonly string[] _classes = ["Amazon", "Assasin", "Necromancer", "Barbarian", "Paladin", "Sorceress", "Druid"];
 
 		private readonly IPage _page;
+		private readonly TestContext _context;
 
 		public string? Name => _page.GetByTestId("spnName").TextContentAsync().GetAwaiter().GetResult();
 		public int? Level => int.Parse(_page.GetByTestId("inpLevel").InputValueAsync().GetAwaiter().GetResult());
@@ -31,9 +33,15 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
 			set { _page.GetByTestId("inpLevelFilter").FillAsync(value.ToString()).GetAwaiter().GetResult(); }
 		}
 
-		public IndexPageObject(IPage page)
+		public IEnumerable<string> RuneWords
+		{
+			get { return _page.QuerySelectorAllAsync("[data-testid=spnRuneWord]").GetAwaiter().GetResult().Select(rw => rw.TextContentAsync().GetAwaiter().GetResult()!); }
+		}
+
+		public IndexPageObject(IPage page, TestContext context)
 		{
 			_page = page;
+			_context = context;
 		}
 
 		public async Task OpenAsync()
@@ -92,6 +100,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
 			{
 				await SelectNextAsync();
 			}
+		}
+
+		public async Task FilterAsync()
+		{
+			await _page.RunAndWaitForRequestFinishedAsync(async () => await _page.GetByTestId("btnFilter").ClickAsync(), new PageRunAndWaitForRequestFinishedOptions
+			{
+				Predicate = request => request.Headers["run-id"] == _context.RunId.ToString()
+			});
 		}
 
 		public async Task SelectNextAsync()

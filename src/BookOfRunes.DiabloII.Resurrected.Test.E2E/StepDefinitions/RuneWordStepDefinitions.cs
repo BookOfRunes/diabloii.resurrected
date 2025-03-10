@@ -37,6 +37,13 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.StepDefinitions
 			_pageObject.LevelFilter = level;
 		}
 
+
+		[When("Filtering rune words")]
+		public async Task FilterAsync()
+		{
+			await _pageObject.FilterAsync();
+		}
+
 		[Then("{string} item type filter should be saved")]
 		public async Task ItemTypeShouldBeSelectedAsync(string itemType)
 		{
@@ -59,6 +66,24 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.StepDefinitions
 		public void LevelFilterShouldBe(int level)
 		{
 			Assert.Equal(level, _pageObject.LevelFilter);
+		}
+
+
+		[Then("Following rune words are shown:")]
+		public void ShowRuneWords(DataTable table)
+		{
+			Assert.Collection(_pageObject.RuneWords, [.. table.AsInspectors()]);
+		}
+	}
+
+	file static class RuneWordStepDefinitionsExtensions
+	{
+		public static IEnumerable<Action<string>> AsInspectors(this DataTable table)
+		{
+			foreach (var row in table.Rows)
+			{
+				yield return rw => Assert.Equal(row["name"], rw);
+			}
 		}
 	}
 }
