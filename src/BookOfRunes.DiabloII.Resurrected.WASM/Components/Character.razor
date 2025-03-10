@@ -69,7 +69,7 @@
 							@foreach (var rune in RuneService.Runes.Take(11).ToList())
 							{
 								<div class="rune">
-									<InputCheckbox type="checkbox" @bind-Value=rune.Selected />
+									<InputCheckbox data-testid="@(string.Format("chb{0}", rune.Name))" type="checkbox" @bind-Value=rune.Selected />
 									<Rune Model="@rune" Available=@((CharacterService.Current?.Level ?? 99) >= rune.Level.GetValueOrDefault()) />
 								</div>
 							}
@@ -78,7 +78,7 @@
 							@foreach (var rune in RuneService.Runes.Skip(11).Take(11).ToList())
 							{
 								<div class="rune">
-									<InputCheckbox type="checkbox" @bind-Value=rune.Selected />
+								<InputCheckbox data-testid="@(string.Format("chb{0}", rune.Name))" type="checkbox" @bind-Value=rune.Selected />
 									<Rune Model="@rune" Available=@((CharacterService.Current?.Level ?? 99) >= rune.Level.GetValueOrDefault()) />
 								</div>
 							}
@@ -87,7 +87,7 @@
 							@foreach (var rune in RuneService.Runes.Skip(22).Take(11).ToList())
 							{
 								<div class="rune">
-									<InputCheckbox type="checkbox" @bind-Value="rune.Selected" />
+								<InputCheckbox data-testid="@(string.Format("chb{0}", rune.Name))" type="checkbox" @bind-Value="rune.Selected" />
 									<Rune Model="@rune" Available=@((CharacterService.Current?.Level ?? 99) >= rune.Level.GetValueOrDefault()) />
 								</div>
 							}

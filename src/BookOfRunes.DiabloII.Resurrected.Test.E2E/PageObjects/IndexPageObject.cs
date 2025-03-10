@@ -87,9 +87,24 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
 			await _page.GetByTestId("btnPrevious").ClickAsync();
 		}
 
+		public async Task SelectRuneAsync(string rune)
+		{
+			await _page.GetByTestId($"chb{rune}").ClickAsync();
+		}
+
+		public async Task SaveAsync()
+		{
+			await _page.GetByTestId("btnSave").ClickAsync();
+		}
+
 		public async Task<bool> IsShownCharaterCreatorAsync()
 		{
 			return (await _page.WaitForSelectorAsync("[data-testid=dlgAddCharacter]")) is not null;
+		}
+
+		public async Task<bool> IsRuneSelectedAsync(string rune)
+		{
+			return await _page.GetByTestId($"chb{rune}").IsCheckedAsync();
 		}
 	}
 }
