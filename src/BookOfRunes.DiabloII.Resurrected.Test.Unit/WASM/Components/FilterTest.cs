@@ -36,7 +36,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][FLT-001] - Select All Armors")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task Filters_SelectArmors()
 		{
 			// Arrange
@@ -55,7 +55,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][FLT-002] - Unselect All Armors")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task Filters_UnselectArmors()
 		{
 			// Arrange
@@ -74,7 +74,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][FLT-003] - Select All Weapons")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task Filters_SelectWeapons()
 		{
 			// Arrange
@@ -93,7 +93,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][FLT-004] - Unselect All Weapons")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task Filters_UnselectWeapons()
 		{
 			// Arrange
@@ -112,7 +112,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][FLT-005] - Filter for Useable Rune Words")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task Filters_FilterForUseableRuneWords()
 		{
 			// Arrange
@@ -135,7 +135,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][FLT-006] - Show All Rune Words")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task Filters_ShowAllRuneWords()
 		{
 			// Arrange
@@ -157,7 +157,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][FLT-007] - Filter Rune Words")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task Filters_FilterRuneWords()
 		{
 			// Arrange

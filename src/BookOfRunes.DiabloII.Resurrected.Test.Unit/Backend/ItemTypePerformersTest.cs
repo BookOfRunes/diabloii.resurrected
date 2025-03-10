@@ -36,7 +36,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.Backend
 		}
 
 		[Fact(DisplayName = "[UNIT][ITP-001] - Get Item Types")]
-		[Trait("Feature", "IT - Item Types")]
+		[Trait("FeatureTitle", "IT - Item Types")]
 		public async Task ItemTypePerformers_PerformAsync_GetItemTypes()
 		{
 			// Arrange

@@ -25,7 +25,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Theory(DisplayName = "[UNIT][ADC-001] - Select Class")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		[InlineData(Class.Amazon)]
 		[InlineData(Class.Assassin)]
 		[InlineData(Class.Barbarian)]
@@ -46,7 +46,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][ADC-003] - Save Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task AddCharacter_Save_SaveCharacter()
 		{
 			// Arrange
@@ -70,7 +70,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][ADC-004] - Cancel")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task AddCharacter_Cancel()
 		{
 			// Arrange

@@ -33,12 +33,12 @@
 			</div>
 			<div class="field">
 				<div class="label">Level <ValidationMessage For="@(() => Level)" /></div>
-				<InputNumber @bind-Value=@Level />
+				<InputNumber data-testid="inpLevel" @bind-Value=@Level />
 
 			</div>
 		</div>
 		<div class="buttons">
-			<button data-testId="btnSave" disabled="@(!context.Validate())" type="submit">Save</button>
+			<button data-testId="btnSaveCharacter" disabled="@(!context.Validate())" type="submit">Save</button>
 			<button data-testId="btnCancel" @onclick="Cancel">Cancel</button>
 		</div>
 	</div>

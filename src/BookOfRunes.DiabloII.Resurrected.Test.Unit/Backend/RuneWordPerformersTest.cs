@@ -45,7 +45,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.Backend
 		}
 
 		[Fact(DisplayName = "[UNIT][GRWQ-001] - Get rune word information")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task RuneWordPerformers_GetRuneWordsQuery_GetInformation()
 		{
 			// Arrange
@@ -73,7 +73,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.Backend
 		}
 
 		[Fact(DisplayName = "[UNIT][GRWQ-002] - Filter by item type")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task RuneWordPerformers_GetRuneWordsQuery_FilterByItemType()
 		{
 			// Arrange
@@ -110,7 +110,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.Backend
 		}
 
 		[Fact(DisplayName = "[UNIT][GRWQ-002] - Filter by socket number")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task RuneWordPerformers_GetRuneWordsQuery_SocketNumber()
 		{
 			// Arrange
@@ -147,7 +147,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.Backend
 		}
 
 		[Fact(DisplayName = "[UNIT][GRWQ-003] - Filter by level")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task RuneWordPerformers_GetRuneWordsQuery_ByLevel()
 		{
 			// Arrange

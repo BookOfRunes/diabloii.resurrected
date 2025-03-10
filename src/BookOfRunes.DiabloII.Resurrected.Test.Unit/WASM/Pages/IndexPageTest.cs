@@ -41,7 +41,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Pages
 		}
 
 		[Fact(DisplayName = "[UNIT][INP-001] - Load Runes")]
-		[Trait("Feature", "RN - Runes")]
+		[Trait("FeatureTitle", "RN - Runes")]
 		public void IndexPage_InitializedAsync_LoadRunes()
 		{
 			// Act
@@ -52,7 +52,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Pages
 		}
 
 		[Fact(DisplayName = "[UNIT][INP-002] - Load Characters")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public void IndexPage_InitializedAsync_LoadCharacters()
 		{
 			// Act
@@ -63,7 +63,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Pages
 		}
 
 		[Fact(DisplayName = "[UNIT][INP-003] - Show About Dialob")]
-		[Trait("Feature", "SP - Support")]
+		[Trait("FeatureTitle", "SP - Support")]
 		public async Task IndexPage_ShowAbout_ShowAboutDialog()
 		{
 			// Arrange

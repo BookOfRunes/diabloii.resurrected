@@ -25,7 +25,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][RSV-001] - Query Runes")]
-		[Trait("Feature", "RN - Runes")]
+		[Trait("FeatureTitle", "RN - Runes")]
 		public async Task RuneService_LoadAsync_QueryRunes()
 		{
 			// Arrange
@@ -39,7 +39,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][RSV-002] - Load Runes")]
-		[Trait("Feature", "RN - Runes")]
+		[Trait("FeatureTitle", "RN - Runes")]
 		public async Task RuneService_LoadAsync_LoadRunes()
 		{
 			// Arrange
@@ -61,7 +61,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][RSV-003] - Raise Loaded Event")]
-		[Trait("Feature", "RN - Runes")]
+		[Trait("FeatureTitle", "RN - Runes")]
 		public async Task RuneService_LoadAsync_RaiseLoadedEvent()
 		{
 			// Arrange
@@ -76,7 +76,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][RSV-004] - Query Selected Runes")]
-		[Trait("Feature", "RN - Runes")]
+		[Trait("FeatureTitle", "RN - Runes")]
 		public async Task RuneService_LoadAsync_QuerySelectedRunes()
 		{
 			// Arrange
@@ -93,7 +93,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][RSV-005] - Save Selected Runes")]
-		[Trait("Feature", "RN - Runes")]
+		[Trait("FeatureTitle", "RN - Runes")]
 		public async Task RuneService_LoadAsync_SaveSelectedRunes()
 		{
 			// Arrange

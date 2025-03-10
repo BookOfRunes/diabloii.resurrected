@@ -48,7 +48,7 @@
 		<EditForm Model="CharacterService.Current">
 			<div @ref="_dataElement" class="data">
 				<span>Name:</span>
-				<span class="highlighted">@(CharacterService.Current.Name)</span>
+				<span data-testid="spnName" class="highlighted">@(CharacterService.Current.Name)</span>
 				<span>Level:</span>
 				<div class="level">
 					<input type="number" class="highlighted" @bind-value=@CharacterService.Current.Level min="1" max="99"/>
