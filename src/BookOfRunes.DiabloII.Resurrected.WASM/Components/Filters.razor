@@ -21,7 +21,7 @@
 						@foreach (var armor in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Armor))
 						{
 							<div class="selector">
-								<InputCheckbox @bind-Value=armor.Selected></InputCheckbox>
+								<InputCheckbox data-testid="@(string.Format("chb{0}", armor.Name))" @bind-Value=armor.Selected></InputCheckbox>
 								<span>@armor.Name</span>
 							</div>
 						}
@@ -31,7 +31,7 @@
 							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Take(5))
 							{
 								<div class="selector">
-									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<InputCheckbox data-testid="@(string.Format("chb{0}", weapon.Name))" @bind-Value=weapon.Selected></InputCheckbox>
 									<span>@weapon.Name</span>
 								</div>
 							}
@@ -40,7 +40,7 @@
 							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Skip(1 * 5).Take(5))
 							{
 								<div class="selector">
-									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<InputCheckbox data-testid="@(string.Format("chb{0}", weapon.Name))" @bind-Value=weapon.Selected></InputCheckbox>
 									<span>@weapon.Name</span>
 								</div>
 							}
@@ -49,7 +49,7 @@
 							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Skip(2 * 5).Take(5))
 							{
 								<div class="selector">
-									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<InputCheckbox data-testid="@(string.Format("chb{0}", weapon.Name))" @bind-Value=weapon.Selected></InputCheckbox>
 									<span>@weapon.Name</span>
 								</div>
 							}
@@ -58,7 +58,7 @@
 							@foreach (var weapon in @CharacterService.Current.Filters.ItemTypes.Where(it => it.Class == ItemClass.Weapon).Skip(3 * 5).Take(5))
 							{
 								<div class="selector">
-									<InputCheckbox @bind-Value=weapon.Selected></InputCheckbox>
+									<InputCheckbox data-testid="@(string.Format("chb{0}", weapon.Name))" @bind-Value=weapon.Selected></InputCheckbox>
 									<span>@weapon.Name</span>
 								</div>
 							}
@@ -69,14 +69,14 @@
 					<div class="field">
 						<span class="label">Sockets:</span>
 						<div class="sockets__value">
-							<InputNumber min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketFrom)"></InputNumber>
+							<InputNumber data-testid="inpSocketFrom" min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketFrom)"></InputNumber>
 							<span>-</span>
-							<InputNumber min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketTo)"></InputNumber>
+							<InputNumber data-testid="inpSocketTo" min="2" max="6" @bind-Value="@(CharacterService.Current.Filters.SocketTo)"></InputNumber>
 						</div>
 					</div>
 					<div class="field">
 						<span class="label">Level:</span>
-						<InputNumber min="2" max="99" @bind-Value="@(CharacterService.Current.Filters.Level)"></InputNumber>
+						<InputNumber data-testid="inpLevelFilter" min="2" max="99" @bind-Value="@(CharacterService.Current.Filters.Level)"></InputNumber>
 					</div>
 				</div>
 			</div>

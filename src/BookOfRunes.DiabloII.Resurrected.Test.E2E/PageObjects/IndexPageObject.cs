@@ -7,12 +7,29 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
 	{
 		private bool _firstCharacter = true;
 
-		private readonly string[] _classes = ["Amazon", "Assassin", "Necromancer", "Barbarian", "Paladin", "Sorceress", "Druid"];
+		private readonly string[] _classes = ["Amazon", "Assasin", "Necromancer", "Barbarian", "Paladin", "Sorceress", "Druid"];
 
 		private readonly IPage _page;
 
 		public string? Name => _page.GetByTestId("spnName").TextContentAsync().GetAwaiter().GetResult();
 		public int? Level => int.Parse(_page.GetByTestId("inpLevel").InputValueAsync().GetAwaiter().GetResult());
+
+		public int SocketFrom
+		{
+			get { return int.Parse(_page.GetByTestId("inpSocketFrom").InputValueAsync().GetAwaiter().GetResult()); }
+			set { _page.GetByTestId("inpSocketFrom").FillAsync(value.ToString()).GetAwaiter().GetResult(); }
+		}
+		public int SocketTo
+		{
+			get { return int.Parse(_page.GetByTestId("inpSocketTo").InputValueAsync().GetAwaiter().GetResult()); }
+			set { _page.GetByTestId("inpSocketTo").FillAsync(value.ToString()).GetAwaiter().GetResult(); }
+		}
+
+		public int LevelFilter
+		{
+			get { return int.Parse(_page.GetByTestId("inpLevelFilter").InputValueAsync().GetAwaiter().GetResult()); }
+			set { _page.GetByTestId("inpLevelFilter").FillAsync(value.ToString()).GetAwaiter().GetResult(); }
+		}
 
 		public IndexPageObject(IPage page)
 		{
@@ -97,6 +114,11 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
 			await _page.GetByTestId("btnSave").ClickAsync();
 		}
 
+		public async Task SelectItemTypeAsync(string itemType)
+		{
+			await _page.GetByTestId($"chb{itemType}").ClickAsync();
+		}
+
 		public async Task<bool> IsShownCharaterCreatorAsync()
 		{
 			return (await _page.WaitForSelectorAsync("[data-testid=dlgAddCharacter]")) is not null;
@@ -104,7 +126,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects
 
 		public async Task<bool> IsRuneSelectedAsync(string rune)
 		{
+			await _page.ReloadAsync();
 			return await _page.GetByTestId($"chb{rune}").IsCheckedAsync();
+		}
+
+		public async Task<bool> IsItemTypeSelectedAsync(string itemType)
+		{
+			await _page.ReloadAsync();
+			return await _page.GetByTestId($"chb{itemType}").IsCheckedAsync();
 		}
 	}
 }
