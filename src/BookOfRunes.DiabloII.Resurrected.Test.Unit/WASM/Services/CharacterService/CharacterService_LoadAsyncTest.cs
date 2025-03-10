@@ -1,9 +1,9 @@
 ﻿using Bogus.Extensions;
 using BookOfRunes.DiabloII.Resurrected.Api;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using Moq;
 using Newtonsoft.Json;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services

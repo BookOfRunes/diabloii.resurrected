@@ -1,10 +1,10 @@
 using Blazored.LocalStorage;
+using BookOfRunes.DiabloII.Resurrected.WASM;
 using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog;
 using BookOfRunes.DiabloII.Resurrected.WASM.Controls.LoadingScreen;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using BookOfRunes.DiabloII.Resurrected.WASM;
 using STrain;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

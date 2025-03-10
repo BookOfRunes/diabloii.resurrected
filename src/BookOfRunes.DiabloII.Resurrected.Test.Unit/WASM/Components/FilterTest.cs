@@ -1,15 +1,14 @@
 ﻿using Bogus.Extensions;
 using BookOfRunes.DiabloII.Resurrected.Api;
 using BookOfRunes.DiabloII.Resurrected.Test.Unit.Extensions;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
+using BookOfRunes.DiabloII.Resurrected.WASM.Components;
 using BookOfRunes.DiabloII.Resurrected.WASM.Controls.LoadingScreen;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
-using BookOfRunes.DiabloII.Resurrected.WASM.Components;
-using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components

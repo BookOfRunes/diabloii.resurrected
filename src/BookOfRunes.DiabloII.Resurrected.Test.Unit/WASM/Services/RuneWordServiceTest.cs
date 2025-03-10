@@ -2,11 +2,10 @@
 using Bogus;
 using Bogus.Extensions;
 using BookOfRunes.DiabloII.Resurrected.Api;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Moq;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using STrain;
 using Xunit;
 
