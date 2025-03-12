@@ -40,3 +40,26 @@ Rule: RW/FR - Filter Rune Words
 			| Dragon           |
 			| Dream            |
 			| Phoenix          |
+
+	Scenario: [E2E][RW-FR-002] - Filter by sockets
+		Given 'Harding' character is added
+		And 'Shield' item type filter is selected
+		And Socket from is set to 3
+		And Socket to is set to 3
+		When Filtering rune words
+		Then Following rune words are shown:
+			| name             |
+			| Ancient's Pledge |
+			| Sanctuary        |
+			| Dragon           |
+			| Dream            |
+
+	Scenario: [E2E][RW-FR-003] - Filter by level
+		Given 'Harding' character is added
+		And 'Shield' item type filter is selected
+		And Level filter is set to 25
+		When Filtering rune words
+		Then Following rune words are shown:
+			| name             |
+			| Ancient's Pledge |
+			| Spirit           |

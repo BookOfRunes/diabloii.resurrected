@@ -2,6 +2,7 @@
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using STrain.Core.Enumerations;
 
+
 #nullable disable
 
 namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Migrations
@@ -1237,7 +1238,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Migrations
 				new("25% Better Chance of Getting Magic Items", null)
 			}, "https://diablo2.wiki.fextralife.com/Rhyme");
 
-		public static RuneWordEnumeration Rift => new(60, "Rite", 53, runes: new List<RuneEnumeration> { RuneEnumeration.Hel, RuneEnumeration.Ko, RuneEnumeration.Lem, RuneEnumeration.Gul },
+		public static RuneWordEnumeration Rift => new(60, "Rift", 53, runes: new List<RuneEnumeration> { RuneEnumeration.Hel, RuneEnumeration.Ko, RuneEnumeration.Lem, RuneEnumeration.Gul },
 			new List<ItemTypeEnumeration> { ItemTypeEnumeration.Polearm, ItemTypeEnumeration.Scepter },
 			new List<Statistic>
 			{
@@ -1605,6 +1606,107 @@ namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Migrations
 				new("+5% To Maximum Fire Resist", null),
 				new("Poison Length Reduced by 50%", null)
 			}, "https://diablo2.wiki.fextralife.com/Obsession");
+
+		// NEW!!
+		public static RuneWordEnumeration Mosaic => new(85, "Mosaic", 53, runes: new List<RuneEnumeration> { RuneEnumeration.Mal, RuneEnumeration.Gul, RuneEnumeration.Amn },
+			new List<ItemTypeEnumeration> { ItemTypeEnumeration.Claw },
+		   new List<Statistic>
+			{
+				new("+50% chance for finishing moves to not consume charges", null),
+				new("When a finisher is executed this way, it now refreshes the expiration timer of the stack", null),
+				new("+2 to Martial Arts (Assassin only)", null),
+				new("+200-250% Enhanced Damage", null),
+				new("+20% Bonus to Attack Rating", null),
+				new("7% Life Steal", null),
+				new("+8-15% to Cold Skill Damage", null),
+				new("+8-15% to Lightning Skill Damage", null),
+				new("+8-15% to Fire Skill Damage", null),
+				new("Prevent Monster Heal", null)
+			}, "https://diablo2.wiki.fextralife.com/Mosaic");
+
+		public static RuneWordEnumeration Bulwark => new(86, "Bulwark", 35, runes: new List<RuneEnumeration> { RuneEnumeration.Shael, RuneEnumeration.Io, RuneEnumeration.Sol },
+			new List<ItemTypeEnumeration> { ItemTypeEnumeration.Helmet },
+		   new List<Statistic>
+			{
+				new("+20% Faster Hit Recovery", null),
+				new("+4-6% Life stolen per hit", null),
+				new("+75-100% Enhanced Defense", null),
+				new("+10 to Vitality", null),
+				new("Increase Maximum Life 5%", null),
+				new("Replenish Life +30", null),
+				new("Damage Reduced by 7", null),
+				new("Physical Damage Received Reduced by 10-15%", null)
+			}, "https://diablo2.wiki.fextralife.com/Bulwark");
+
+		public static RuneWordEnumeration Metamorphosis => new(87, "Metamorphosis", 67, runes: new List<RuneEnumeration> { RuneEnumeration.Io, RuneEnumeration.Cham, RuneEnumeration.Fal },
+			new List<ItemTypeEnumeration> { ItemTypeEnumeration.Helmet },
+		   new List<Statistic>
+			{
+				new("Werewolf strikes grant Mark for 180 seconds", null),
+				new("Mark of the Wolf:", null),
+				new("+30% Bonus to Attack Rating", null),
+				new("Increase Maximum Life 40%", null),
+				new("Werebear strikes grant Mark for 180 seconds", null),
+				new("Mark of the Bear:", null),
+				new("+25% Attack Speed", null),
+				new("Physical Damage Received Reduced by 20%", null),
+				new("+5 to Shape Shifting Skills (Druid only)", null),
+				new("+25% Chance of Crushing Blow", null),
+				new("+50-80% Enhanced Defense", null),
+				new("+10 to Strength", null),
+				new("+10 to Vitality", null),
+				new("All Resistances +10", null),
+				new("Cannot be Frozen", null)
+			}, "https://diablo2.wiki.fextralife.com/Metamorphosis");
+
+		public static RuneWordEnumeration Hustle => new(87, "Hustle", 39, runes: new List<RuneEnumeration> { RuneEnumeration.Shael, RuneEnumeration.Ko, RuneEnumeration.Eld },
+			Enumeration.GetAll<ItemTypeEnumeration>(),
+		   new List<Statistic>
+			{
+				new("5% Chance to cast level 1 Burst of Speed on striking (In Weapons)", null),
+				new("Level 1 Fanaticism Aura When Equipped (In Weapons)", null),
+				new("+30% Increased Attack Speed (In Weapons)", null),
+				new("+180-200% Enhanced Damage (In Weapons)", null),
+				new("+75% Damage to Undead (In Weapons)", null),
+				new("+50 to Attack Rating against Undead (In Weapons)", null),
+				new("+10 to Dexterity (In Weapons)", null),
+
+				new("+65% Faster Run/Walk (In Armors)", null),
+				new("+40% Increased Attack Speed (In Armors)", null),
+				new("+20% Faster Hit Recovery (In Armors)", null),
+				new("+6 to Evade (In Armors)", null),
+				new("+10 to Dexterity (In Armors)", null),
+				new("50% Slower Stamina Drain (In Armors)", null),
+				new("+All Resistances +10 (In Armors)", null)
+			}, "https://diablo2.wiki.fextralife.com/Hustle");
+
+		public static RuneWordEnumeration Cure => new(88, "Cure", 35, runes: new List<RuneEnumeration> { RuneEnumeration.Shael, RuneEnumeration.Ko, RuneEnumeration.Eld },
+				new List<ItemTypeEnumeration> { ItemTypeEnumeration.Helmet },
+		   new List<Statistic>
+			{
+				new("Level 1 Cleansing Aura when Equipped", null),
+				new("+20% Faster Hit Recovery", null),
+				new("+75-100% Enhanced Defense", null),
+				new("+10 to Vitality", null),
+				new("Increase Maximum Life 5%", null),
+				new("Poison Resist +40-60%", null),
+				new("Poison Length Reduced by 50%", null)
+			}, "https://diablo2.wiki.fextralife.com/Cure");
+
+		public static RuneWordEnumeration Heart => new(89, "Heart", 35, runes: new List<RuneEnumeration> { RuneEnumeration.Shael, RuneEnumeration.Io, RuneEnumeration.Thul },
+				new List<ItemTypeEnumeration> { ItemTypeEnumeration.Helmet },
+		   new List<Statistic>
+			{
+				new("+20% Faster Hit Recovery", null),
+				new("+75-100% Enhanced Defense", null),
+				new("+10 to Vitality", null),
+				new("Increase Maximum Life 5%", null),
+				new("Cold Resist +40-60%", null),
+				new("Cold Absorb +10-15%", null),
+				new("Cannot be Frozen", null)
+			}, "https://diablo2.wiki.fextralife.com/Cure");
+
+		// Ground
 
 		public RuneWordEnumeration(int id, string name, int level, IEnumerable<RuneEnumeration> runes, IEnumerable<ItemTypeEnumeration> itemTypes, IEnumerable<Statistic> statistics, string url)
 			: base(id, name)

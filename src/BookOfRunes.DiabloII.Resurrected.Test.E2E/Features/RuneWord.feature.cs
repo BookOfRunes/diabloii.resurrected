@@ -252,6 +252,130 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             await this.ScenarioCleanupAsync();
         }
         
+        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW-FR-002] - Filter by sockets")]
+        [Xunit.TraitAttribute("FeatureTitle", "RW - Rune Word")]
+        [Xunit.TraitAttribute("Description", "[E2E][RW-FR-002] - Filter by sockets")]
+        public async System.Threading.Tasks.Task E2ERW_FR_002_FilterBySockets()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW-FR-002] - Filter by sockets", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 44
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 45
+  await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 46
+  await testRunner.AndAsync("\'Shield\' item type filter is selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 47
+  await testRunner.AndAsync("Socket from is set to 3", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 48
+  await testRunner.AndAsync("Socket to is set to 3", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 49
+  await testRunner.WhenAsync("Filtering rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+                global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
+                            "name"});
+                table2.AddRow(new string[] {
+                            "Ancient\'s Pledge"});
+                table2.AddRow(new string[] {
+                            "Sanctuary"});
+                table2.AddRow(new string[] {
+                            "Dragon"});
+                table2.AddRow(new string[] {
+                            "Dream"});
+#line 50
+  await testRunner.ThenAsync("Following rune words are shown:", ((string)(null)), table2, "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW-FR-003] - Filter by level")]
+        [Xunit.TraitAttribute("FeatureTitle", "RW - Rune Word")]
+        [Xunit.TraitAttribute("Description", "[E2E][RW-FR-003] - Filter by level")]
+        public async System.Threading.Tasks.Task E2ERW_FR_003_FilterByLevel()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW-FR-003] - Filter by level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 57
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 58
+  await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 59
+  await testRunner.AndAsync("\'Shield\' item type filter is selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 60
+  await testRunner.AndAsync("Level filter is set to 25", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
+#line hidden
+#line 61
+  await testRunner.WhenAsync("Filtering rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+                global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
+                            "name"});
+                table3.AddRow(new string[] {
+                            "Ancient\'s Pledge"});
+                table3.AddRow(new string[] {
+                            "Spirit"});
+#line 62
+  await testRunner.ThenAsync("Following rune words are shown:", ((string)(null)), table3, "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW/AR-001] - Show all rune words")]
+        [Xunit.TraitAttribute("FeatureTitle", "RW - Rune Word")]
+        [Xunit.TraitAttribute("Description", "[E2E][RW/AR-001] - Show all rune words")]
+        public async System.Threading.Tasks.Task E2ERWAR_001_ShowAllRuneWords()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW/AR-001] - Show all rune words", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 69
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 70
+  await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 71
+  await testRunner.WhenAsync("Showing all rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 72
+  await testRunner.ThenAsync("Should be shown 93 rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : object, Xunit.IAsyncLifetime
