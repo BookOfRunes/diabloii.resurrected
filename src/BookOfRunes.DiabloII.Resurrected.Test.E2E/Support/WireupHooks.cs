@@ -1,6 +1,8 @@
 using BookOfRunes.DiabloII.Resurrected.Test.E2E.PageObjects;
 using Microsoft.Playwright;
+using System.Diagnostics.CodeAnalysis;
 
+[assembly: ExcludeFromCodeCoverage]
 namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Support
 {
     [Binding]
