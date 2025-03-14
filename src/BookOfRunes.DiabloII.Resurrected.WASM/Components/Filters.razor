@@ -122,8 +122,11 @@
 
 	private async Task GetUseableAsync()
 	{
+		if (CharacterService.Current is null) return;
+
 		using (Loading.Show())
 		{
+			CharacterService.Current.Filters.Level = CharacterService.Current.Level;
 			await RuneWordService.LoadAsync(CharacterService.Current!.Filters.ItemTypes.Where(f => f.Selected).Select(f => f.Id).ToList(), 2, 6, CharacterService.Current!.Level, default);
 		}
 	}

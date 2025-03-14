@@ -238,6 +238,8 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
                 table1.AddRow(new string[] {
                             "Splendor"});
                 table1.AddRow(new string[] {
+                            "Hustle"});
+                table1.AddRow(new string[] {
                             "Sanctuary"});
                 table1.AddRow(new string[] {
                             "Dragon"});
@@ -260,7 +262,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW/FR-002] - Filter by sockets", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 44
+#line 45
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -270,19 +272,19 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 45
+#line 46
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 46
+#line 47
   await testRunner.AndAsync("\'Shield\' item type filter is selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 47
+#line 48
   await testRunner.AndAsync("Socket from is set to 3", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 48
+#line 49
   await testRunner.AndAsync("Socket to is set to 3", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 49
+#line 50
   await testRunner.WhenAsync("Filtering rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table2 = new global::Reqnroll.Table(new string[] {
@@ -290,12 +292,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
                 table2.AddRow(new string[] {
                             "Ancient\'s Pledge"});
                 table2.AddRow(new string[] {
+                            "Hustle"});
+                table2.AddRow(new string[] {
                             "Sanctuary"});
                 table2.AddRow(new string[] {
                             "Dragon"});
                 table2.AddRow(new string[] {
                             "Dream"});
-#line 50
+#line 51
   await testRunner.ThenAsync("Following rune words are shown:", ((string)(null)), table2, "Then ");
 #line hidden
             }
@@ -310,7 +314,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW/FR-003] - Filter by level", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 57
+#line 59
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -320,16 +324,16 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 58
+#line 60
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 59
+#line 61
   await testRunner.AndAsync("\'Shield\' item type filter is selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 60
+#line 62
   await testRunner.AndAsync("Level filter is set to 25", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 61
+#line 63
   await testRunner.WhenAsync("Filtering rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
                 global::Reqnroll.Table table3 = new global::Reqnroll.Table(new string[] {
@@ -338,22 +342,22 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
                             "Ancient\'s Pledge"});
                 table3.AddRow(new string[] {
                             "Spirit"});
-#line 62
+#line 64
   await testRunner.ThenAsync("Following rune words are shown:", ((string)(null)), table3, "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="[E2][RW/FR-004] - Show All Rune Words")]
+        [Xunit.SkippableFactAttribute(DisplayName="[E2][RW/US-001] - Filter for usable rune words")]
         [Xunit.TraitAttribute("FeatureTitle", "RW - Rune Word")]
-        [Xunit.TraitAttribute("Description", "[E2][RW/FR-004] - Show All Rune Words")]
-        public async System.Threading.Tasks.Task E2RWFR_004_ShowAllRuneWords()
+        [Xunit.TraitAttribute("Description", "[E2][RW/US-001] - Filter for usable rune words")]
+        public async System.Threading.Tasks.Task E2RWUS_001_FilterForUsableRuneWords()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2][RW/FR-004] - Show All Rune Words", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 70
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2][RW/US-001] - Filter for usable rune words", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 72
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -363,14 +367,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 71
-  await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
-#line hidden
-#line 72
-  await testRunner.WhenAsync("Showing all rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
 #line 73
-  await testRunner.ThenAsync("Should be shown 94 rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+  await testRunner.GivenAsync("\'Harding\' character is added with level 72", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 74
+  await testRunner.WhenAsync("Filtering for usable rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 75
+  await testRunner.ThenAsync("Level filter should be 72", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

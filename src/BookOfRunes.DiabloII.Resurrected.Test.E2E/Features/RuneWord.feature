@@ -36,6 +36,7 @@ Rule: RW/FR - Filter Rune Words
 			| Spirit           |
 			| Rhyme            |
 			| Splendor         |
+			| Hustle           |
 			| Sanctuary        |
 			| Dragon           |
 			| Dream            |
@@ -50,6 +51,7 @@ Rule: RW/FR - Filter Rune Words
 		Then Following rune words are shown:
 			| name             |
 			| Ancient's Pledge |
+			| Hustle           |
 			| Sanctuary        |
 			| Dragon           |
 			| Dream            |
@@ -65,9 +67,9 @@ Rule: RW/FR - Filter Rune Words
 			| Spirit           |
 
 
-Rule: RW/SA - Show All Rune Words
+Rule: RW/US - Filter for Usable Rune Words
 
-	Scenario: [E2][RW/FR-004] - Show All Rune Words
-		Given 'Harding' character is added
-		When Showing all rune words
-		Then Should be shown 94 rune words
+	Scenario: [E2][RW/US-001] - Filter for usable rune words
+		Given 'Harding' character is added with level 72
+		When Filtering for usable rune words
+		Then Level filter should be 72
