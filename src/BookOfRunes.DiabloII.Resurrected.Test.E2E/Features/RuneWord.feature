@@ -41,7 +41,7 @@ Rule: RW/FR - Filter Rune Words
 			| Dream            |
 			| Phoenix          |
 
-	Scenario: [E2E][RW-FR-002] - Filter by sockets
+	Scenario: [E2E][RW/FR-002] - Filter by sockets
 		Given 'Harding' character is added
 		And 'Shield' item type filter is selected
 		And Socket from is set to 3
@@ -54,7 +54,7 @@ Rule: RW/FR - Filter Rune Words
 			| Dragon           |
 			| Dream            |
 
-	Scenario: [E2E][RW-FR-003] - Filter by level
+	Scenario: [E2E][RW/FR-003] - Filter by level
 		Given 'Harding' character is added
 		And 'Shield' item type filter is selected
 		And Level filter is set to 25
@@ -63,3 +63,11 @@ Rule: RW/FR - Filter Rune Words
 			| name             |
 			| Ancient's Pledge |
 			| Spirit           |
+
+
+Rule: RW/SA - Show All Rune Words
+
+	Scenario: [E2][RW/FR-004] - Show All Rune Words
+		Given 'Harding' character is added
+		When Showing all rune words
+		Then Should be shown 94 rune words

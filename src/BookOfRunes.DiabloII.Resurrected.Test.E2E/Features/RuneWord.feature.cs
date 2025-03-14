@@ -252,14 +252,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW-FR-002] - Filter by sockets")]
+        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW/FR-002] - Filter by sockets")]
         [Xunit.TraitAttribute("FeatureTitle", "RW - Rune Word")]
-        [Xunit.TraitAttribute("Description", "[E2E][RW-FR-002] - Filter by sockets")]
-        public async System.Threading.Tasks.Task E2ERW_FR_002_FilterBySockets()
+        [Xunit.TraitAttribute("Description", "[E2E][RW/FR-002] - Filter by sockets")]
+        public async System.Threading.Tasks.Task E2ERWFR_002_FilterBySockets()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW-FR-002] - Filter by sockets", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW/FR-002] - Filter by sockets", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 44
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -302,14 +302,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW-FR-003] - Filter by level")]
+        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW/FR-003] - Filter by level")]
         [Xunit.TraitAttribute("FeatureTitle", "RW - Rune Word")]
-        [Xunit.TraitAttribute("Description", "[E2E][RW-FR-003] - Filter by level")]
-        public async System.Threading.Tasks.Task E2ERW_FR_003_FilterByLevel()
+        [Xunit.TraitAttribute("Description", "[E2E][RW/FR-003] - Filter by level")]
+        public async System.Threading.Tasks.Task E2ERWFR_003_FilterByLevel()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW-FR-003] - Filter by level", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW/FR-003] - Filter by level", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 57
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -345,15 +345,15 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             await this.ScenarioCleanupAsync();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="[E2E][RW/AR-001] - Show all rune words")]
+        [Xunit.SkippableFactAttribute(DisplayName="[E2][RW/FR-004] - Show All Rune Words")]
         [Xunit.TraitAttribute("FeatureTitle", "RW - Rune Word")]
-        [Xunit.TraitAttribute("Description", "[E2E][RW/AR-001] - Show all rune words")]
-        public async System.Threading.Tasks.Task E2ERWAR_001_ShowAllRuneWords()
+        [Xunit.TraitAttribute("Description", "[E2][RW/FR-004] - Show All Rune Words")]
+        public async System.Threading.Tasks.Task E2RWFR_004_ShowAllRuneWords()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RW/AR-001] - Show all rune words", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 69
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2][RW/FR-004] - Show All Rune Words", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 70
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -363,14 +363,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 70
+#line 71
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 71
+#line 72
   await testRunner.WhenAsync("Showing all rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 72
-  await testRunner.ThenAsync("Should be shown 93 rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line 73
+  await testRunner.ThenAsync("Should be shown 94 rune words", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
