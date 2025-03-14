@@ -95,12 +95,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][RN/SR-001] - Save runes")]
         [Xunit.TraitAttribute("FeatureTitle", "RN - Runes")]
         [Xunit.TraitAttribute("Description", "[E2E][RN/SR-001] - Save runes")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ERNSR_001_SaveRunes()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][RN/SR-001] - Save runes", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+#line 8
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -110,16 +112,16 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 8
+#line 9
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 10
   await testRunner.AndAsync("Rune \'Ith\' is selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 10
+#line 11
   await testRunner.WhenAsync("Saving character", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 11
+#line 12
   await testRunner.ThenAsync("Rune \'Ith\' should be selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

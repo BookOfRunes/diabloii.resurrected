@@ -18,13 +18,18 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Support
         {
             var testContext = new TestContext();
             var playwright = await Playwright.CreateAsync();
-            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+
+            var targetBrowser = Environment.GetEnvironmentVariable("TEST_RUN_TARGET_BROWSER");
+            var browser = targetBrowser switch
             {
-                //Headless = false
-            });
+                "chromium" => await playwright.Chromium.LaunchAsync(),
+                "firefox" => await playwright.Firefox.LaunchAsync(),
+                "webkit" => await playwright.Webkit.LaunchAsync(),
+                _ => await playwright.Chromium.LaunchAsync()
+            };
             var context = await browser.NewContextAsync(new BrowserNewContextOptions
             {
-                BaseURL = "http://localhost:5000/",
+                BaseURL = Environment.GetEnvironmentVariable("TEST_RUN_URL") ?? "http://localhost:5000/",
                 ExtraHTTPHeaders = new Dictionary<string, string>
                 {
                     ["run-id"] = testContext.RunId.ToString()

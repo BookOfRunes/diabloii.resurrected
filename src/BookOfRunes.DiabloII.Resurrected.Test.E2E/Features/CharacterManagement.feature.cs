@@ -26,8 +26,8 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CM - Character Management", "Allows to manage characters with names and levels. Character can be added, levele" +
-                "d up or deleted.", global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "CM - Character Management", ("Allows to manage characters with names and levels. Character can be added, levele" +
+                "d up or deleted."), global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
@@ -96,12 +96,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][CM/AC-001]: Add first character")]
         [Xunit.TraitAttribute("FeatureTitle", "CM - Character Management")]
         [Xunit.TraitAttribute("Description", "[E2E][CM/AC-001]: Add first character")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ECMAC_001AddFirstCharacter()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][CM/AC-001]: Add first character", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+#line 8
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -111,10 +113,10 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 8
+#line 9
   await testRunner.WhenAsync("Opening the application", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 9
+#line 10
   await testRunner.ThenAsync("Character creator should be shown", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -124,12 +126,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][CM/AC-002]: Add Character")]
         [Xunit.TraitAttribute("FeatureTitle", "CM - Character Management")]
         [Xunit.TraitAttribute("Description", "[E2E][CM/AC-002]: Add Character")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ECMAC_002AddCharacter()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][CM/AC-002]: Add Character", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 11
+#line 13
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -139,13 +143,13 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 12
+#line 14
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 13
+#line 15
   await testRunner.WhenAsync("Adding \'Logen\' character", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 14
+#line 16
   await testRunner.ThenAsync("\'Logen\' should be added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -155,12 +159,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][CM/LU-001]: Level up characater")]
         [Xunit.TraitAttribute("FeatureTitle", "CM - Character Management")]
         [Xunit.TraitAttribute("Description", "[E2E][CM/LU-001]: Level up characater")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ECMLU_001LevelUpCharacater()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][CM/LU-001]: Level up characater", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+#line 21
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -170,13 +176,13 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 19
+#line 22
   await testRunner.GivenAsync("\'Harding\' character is added with level 18", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 23
   await testRunner.WhenAsync("Leveling up \'Harding\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 24
   await testRunner.ThenAsync("Level should be 19", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -186,12 +192,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][CM/DC-001]: Delete character")]
         [Xunit.TraitAttribute("FeatureTitle", "CM - Character Management")]
         [Xunit.TraitAttribute("Description", "[E2E][CM/DC-001]: Delete character")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ECMDC_001DeleteCharacter()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][CM/DC-001]: Delete character", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 25
+#line 29
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -201,16 +209,16 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 26
+#line 30
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 27
+#line 31
   await testRunner.AndAsync("\'Logen\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 28
+#line 32
   await testRunner.WhenAsync("Deleting \'Harding\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 29
+#line 33
   await testRunner.ThenAsync("\'Logen\' should be selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -220,12 +228,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][CM/DC-002]: Delete last character")]
         [Xunit.TraitAttribute("FeatureTitle", "CM - Character Management")]
         [Xunit.TraitAttribute("Description", "[E2E][CM/DC-002]: Delete last character")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ECMDC_002DeleteLastCharacter()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][CM/DC-002]: Delete last character", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 31
+#line 36
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -235,13 +245,13 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 32
+#line 37
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 33
+#line 38
   await testRunner.WhenAsync("Deleting \'Harding\'", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 34
+#line 39
   await testRunner.ThenAsync("Character creator should be shown", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -251,12 +261,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][CM/SC-001]: Select next character")]
         [Xunit.TraitAttribute("FeatureTitle", "CM - Character Management")]
         [Xunit.TraitAttribute("Description", "[E2E][CM/SC-001]: Select next character")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ECMSC_001SelectNextCharacter()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][CM/SC-001]: Select next character", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 38
+#line 44
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -266,19 +278,19 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 39
+#line 45
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 40
+#line 46
   await testRunner.AndAsync("\'Logen\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 41
+#line 47
   await testRunner.AndAsync("\'Harding\' is selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 42
+#line 48
   await testRunner.WhenAsync("Selecting next character", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 43
+#line 49
   await testRunner.ThenAsync("\'Logen\' should be selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
@@ -288,12 +300,14 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
         [Xunit.SkippableFactAttribute(DisplayName="[E2E][CM/SC-002]: Select previous character")]
         [Xunit.TraitAttribute("FeatureTitle", "CM - Character Management")]
         [Xunit.TraitAttribute("Description", "[E2E][CM/SC-002]: Select previous character")]
+        [Xunit.TraitAttribute("Category", "e2e")]
         public async System.Threading.Tasks.Task E2ECMSC_002SelectPreviousCharacter()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "e2e"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("[E2E][CM/SC-002]: Select previous character", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 45
+#line 52
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -303,19 +317,19 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.E2E.Features
             else
             {
                 await this.ScenarioStartAsync();
-#line 46
+#line 53
   await testRunner.GivenAsync("\'Harding\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 47
+#line 54
   await testRunner.AndAsync("\'Logen\' character is added", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 48
+#line 55
   await testRunner.AndAsync("\'Logen\' is selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
-#line 49
+#line 56
   await testRunner.WhenAsync("Selecting previous character", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
-#line 50
+#line 57
   await testRunner.ThenAsync("\'Harding\' should be selected", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
