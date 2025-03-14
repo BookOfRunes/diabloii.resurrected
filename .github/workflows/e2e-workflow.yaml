@@ -2,8 +2,7 @@ name: E2E Test Pipeline
 run-name: "E2E Test ${{ github.ref_name }}"
 
 on:
-  pull_request:
-    branches: [develop]
+ workflow_dispatch:
 
 jobs:
   restore-dependecies:
