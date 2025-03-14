@@ -36,7 +36,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.Backend
 		}
 
 		[Fact(DisplayName = "[UNIT][RNP-001] - Get Runes")]
-		[Trait("Feature", "RN - Runes")]
+		[Trait("FeatureTitle", "RN - Runes")]
 		public async Task RunePerformers_PerformerAsync_GetRunes()
 		{
 			// Arrange

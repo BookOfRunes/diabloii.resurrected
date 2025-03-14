@@ -1,9 +1,9 @@
 ﻿using Bogus.Extensions;
 using BookOfRunes.DiabloII.Resurrected.Api;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using Moq;
 using Newtonsoft.Json;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
@@ -11,7 +11,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 	public partial class CharacterServiceTest
 	{
 		[Fact(DisplayName = "[UNIT][CSV/LOAD-001] - Query Characters")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_LoadAsync_QueryCharacter()
 		{
 			// Arrange
@@ -25,7 +25,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV/LOAD-002] - Load Characters")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_LoadAsync_LoadCharacter()
 		{
 			// Arrange
@@ -47,7 +47,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV/LOAD-003] - Raise Loaded Event")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_LoadAsync_RaiseLoadedEvent()
 		{
 			// Arrange
@@ -62,7 +62,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV/LOAD-016] - Querying Item Types")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_LoadAsync_QueryingItemTypes()
 		{
 			// Arrange

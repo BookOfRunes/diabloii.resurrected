@@ -1,11 +1,11 @@
 ﻿using AutoBogus;
 using BookOfRunes.DiabloII.Resurrected.Api;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
+using BookOfRunes.DiabloII.Resurrected.WASM.Components;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
-using BookOfRunes.DiabloII.Resurrected.WASM.Components;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
@@ -33,7 +33,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][RNW-001] - Get Skill")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public void RuneWord_GetSkill()
 		{
 			// Arrange
@@ -54,7 +54,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][RNW-001] - Calculate Statistics Based on Character Level")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task RuneWord_CalculateCharacterLevel()
 		{
 			// Arrange

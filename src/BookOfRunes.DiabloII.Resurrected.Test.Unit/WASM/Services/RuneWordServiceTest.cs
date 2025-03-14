@@ -2,11 +2,10 @@
 using Bogus;
 using Bogus.Extensions;
 using BookOfRunes.DiabloII.Resurrected.Api;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Moq;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using STrain;
 using Xunit;
 
@@ -24,7 +23,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][RWS-001] - Load Rune Words")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task RuneWordService_LoadRuneWords()
 		{
 			// Arrange
@@ -48,7 +47,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][RWS-002] - Raise Loaded Event")]
-		[Trait("Feature", "RW - Rune Word")]
+		[Trait("FeatureTitle", "RW - Rune Word")]
 		public async Task RuneWordService_RaiseLoadedEvent()
 		{
 			// Arrange

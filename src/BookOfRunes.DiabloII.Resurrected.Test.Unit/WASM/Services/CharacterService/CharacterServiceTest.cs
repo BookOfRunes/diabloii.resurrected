@@ -3,13 +3,13 @@ using Blazored.LocalStorage;
 using Bogus;
 using Bogus.Extensions;
 using BookOfRunes.DiabloII.Resurrected.Api;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using BookOfRunes.DiabloII.Resurrected.WASM.Defaults;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Moq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
 using STrain;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
@@ -31,7 +31,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-004] - Get Current Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_LoadAsync_GetCurrentCharacter()
 		{
 			// Arrange
@@ -55,7 +55,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-005] - Get Current Character on Empty Character List")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_LoadAsync_GetCurrentCharacterOnEmptyCharacterList()
 		{
 			// Arrange
@@ -71,7 +71,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-006] - Select Next Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_Next_SelectNextCharacter()
 		{
 			// Arrange
@@ -91,7 +91,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-006] - Select Next After the Last")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_Next_SelectNextCharacterAfterTheLast()
 		{
 			// Arrange
@@ -111,7 +111,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-007] - Select Previous")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_Previous_SelectPrevious()
 		{
 			// Arrange
@@ -132,7 +132,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-007] - Select Previous Before the First")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_Previous_SelectPreviousBeforeTheFirst()
 		{
 			// Arrange
@@ -152,7 +152,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-008] - Select Next Raises Changed Event")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_Previous_SelectNextRaisesChangedEvent()
 		{
 			// Arrange
@@ -169,7 +169,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-009] - Select Previous Raises Changed Event")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_Previous_SelectPreviousRaisesChangedEvent()
 		{
 			// Arrange
@@ -187,7 +187,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-011] - Set Current Character after Add")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_SaveAsync_SetCurrentCharacterAfterAdd()
 		{
 			// Arrange
@@ -210,7 +210,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-012] - Store Added Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_SaveAsync_StoreAddedCharacter()
 		{
 			// Arrange
@@ -230,7 +230,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-013] - Delete Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_SaveAsync_DeleteCharacter()
 		{
 			// Arrange
@@ -250,7 +250,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-014] - Store Delete Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_SaveAsync_StoreDeletedCharacter()
 		{
 			// Arrange
@@ -270,7 +270,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		}
 
 		[Fact(DisplayName = "[UNIT][CSV-015] - Save Characters")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task CharacterService_SaveAsync_SaveCharacters()
 		{
 			// Arrange

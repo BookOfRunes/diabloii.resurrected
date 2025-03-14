@@ -2,10 +2,7 @@
 @using BookOfRunes.DiabloII.Resurrected.Api
 @using BookOfRunes.DiabloII.Resurrected.WASM.Services
 @using Microsoft.AspNetCore.Components.Forms
-@using BookOfRunes.DiabloII.Resurrected.Api
 @using BookOfRunes.DiabloII.Resurrected.WASM.Models
-@using BookOfRunes.DiabloII.Resurrected.WASM.Services
-@using BookOfRunes.DiabloII.Resurrected.WASM.Services
 @using SimpleExpressionEvaluator
 
 @inject ICharacterService CharacterService;
@@ -14,7 +11,7 @@
 <EditForm Model="CharacterService.Current">
     <div class="main">
         <div class="basics">
-            <span class="name">@Model.Name</span>
+            <span data-testid="spnRuneWord" class="name">@Model.Name</span>
             <div class="runes">
                 @foreach (var rune in Model.Runes)
                 {

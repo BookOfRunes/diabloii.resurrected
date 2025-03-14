@@ -37,21 +37,21 @@
 	{
 		<div class="top">
 			<div class="class">
-				<div class="pager previous" @onclick="() => CharacterService.Previous()"/>
+				<div data-testid="btnPrevious" class="pager previous" @onclick="() => CharacterService.Previous()" />
 				<div @ref="_imageElement" class="image">
 					<img src="@($"/assets/classes/{CharacterService.Current.Class.ToString().ToLower()}.png")" @onmousewheel="OnMouseWheel" />
 				</div>
-				<div class="pager next" @onclick="() => CharacterService.Next()"/>
+				<div data-testid="btnNext" class="pager next" @onclick="() => CharacterService.Next()"/>
 			</div>
 			<div @ref="_indexElement" class="index">@(CharacterService.Index + 1)/@(CharacterService.Characters.Count())</div>
 		</div>
 		<EditForm Model="CharacterService.Current">
 			<div @ref="_dataElement" class="data">
 				<span>Name:</span>
-				<span class="highlighted">@(CharacterService.Current.Name)</span>
+				<span data-testid="spnName" class="highlighted">@(CharacterService.Current.Name)</span>
 				<span>Level:</span>
 				<div class="level">
-					<input type="number" class="highlighted" @bind-value=@CharacterService.Current.Level min="1" max="99"/>
+					<input data-testid="inpLevel" type="number" class="highlighted" @bind-value=@CharacterService.Current.Level min="1" max="99" />
 					<div>
 						<img data-testid="btnIncreaseLevel" class="counter" src="/assets/increase.png" @onclick="IncreaseLevel"/>
 						<img data-testid="btnDecreaseLevel" class="counter" src="/assets/decrease.png" @onclick="DecreaseLevel" />
@@ -69,7 +69,7 @@
 							@foreach (var rune in RuneService.Runes.Take(11).ToList())
 							{
 								<div class="rune">
-									<InputCheckbox type="checkbox" @bind-Value=rune.Selected />
+									<InputCheckbox data-testid="@(string.Format("chb{0}", rune.Name))" type="checkbox" @bind-Value=rune.Selected />
 									<Rune Model="@rune" Available=@((CharacterService.Current?.Level ?? 99) >= rune.Level.GetValueOrDefault()) />
 								</div>
 							}
@@ -78,7 +78,7 @@
 							@foreach (var rune in RuneService.Runes.Skip(11).Take(11).ToList())
 							{
 								<div class="rune">
-									<InputCheckbox type="checkbox" @bind-Value=rune.Selected />
+								<InputCheckbox data-testid="@(string.Format("chb{0}", rune.Name))" type="checkbox" @bind-Value=rune.Selected />
 									<Rune Model="@rune" Available=@((CharacterService.Current?.Level ?? 99) >= rune.Level.GetValueOrDefault()) />
 								</div>
 							}
@@ -87,7 +87,7 @@
 							@foreach (var rune in RuneService.Runes.Skip(22).Take(11).ToList())
 							{
 								<div class="rune">
-									<InputCheckbox type="checkbox" @bind-Value="rune.Selected" />
+								<InputCheckbox data-testid="@(string.Format("chb{0}", rune.Name))" type="checkbox" @bind-Value="rune.Selected" />
 									<Rune Model="@rune" Available=@((CharacterService.Current?.Level ?? 99) >= rune.Level.GetValueOrDefault()) />
 								</div>
 							}

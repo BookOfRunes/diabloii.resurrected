@@ -1,14 +1,13 @@
 ﻿using Bogus;
 using BookOfRunes.DiabloII.Resurrected.Test.Unit.Extensions;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components;
+using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
+using BookOfRunes.DiabloII.Resurrected.WASM.Components;
 using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.JSInterop;
 using Moq;
-using BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Fakers;
-using BookOfRunes.DiabloII.Resurrected.WASM.Components;
 using Xunit;
 
 namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
@@ -44,7 +43,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-001] - Add New Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_AddNewCharacter()
 		{
 			// Arrange
@@ -58,7 +57,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-002] - Add First Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_AddFirstCharacter()
 		{
 			// Arrange
@@ -74,7 +73,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-003] - Increase Characer Level")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_IncreaseCharacterLevel()
 		{
 			// Arrange
@@ -92,7 +91,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-004] - Decrease Characer Level")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_DecreaseCharacterLevel()
 		{
 			// Arrange
@@ -110,7 +109,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-005] - Save Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_SaveCharacter()
 		{
 			// Arrange
@@ -124,7 +123,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-006] - Save Runes")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_SaveRunes()
 		{
 			// Arrange
@@ -138,7 +137,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-007] - Delete Character")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_DeleteCharacter()
 		{
 			// Arrange
@@ -155,7 +154,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Components
 		}
 
 		[Fact(DisplayName = "[UNIT][CHR-008] - Delete Character if nothing Selected")]
-		[Trait("Feature", "CM - Character Management")]
+		[Trait("FeatureTitle", "CM - Character Management")]
 		public async Task Character_DeleteCharacterIfNothingSelected()
 		{
 			// Arrange

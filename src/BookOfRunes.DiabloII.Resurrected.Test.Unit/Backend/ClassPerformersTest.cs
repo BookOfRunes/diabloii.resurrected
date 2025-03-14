@@ -36,7 +36,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.Backend
 		}
 
 		[Fact(DisplayName = "[UNIT][CLP-001] - Get Classes")]
-		[Trait("Feature", "CL - Classes")]
+		[Trait("FeatureTitle", "CL - Classes")]
 		public async Task ClassPerformers_PerformAsync_GetClasses()
 		{
 			// Arrange
