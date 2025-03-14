@@ -21,4 +21,9 @@
     <ProjectReference Include="..\BookOfRunes.DiabloII.Resurrected.Api\BookOfRunes.DiabloII.Resurrected.Api.csproj" />
   </ItemGroup>
 
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+	</ItemGroup>
+
 </Project>
