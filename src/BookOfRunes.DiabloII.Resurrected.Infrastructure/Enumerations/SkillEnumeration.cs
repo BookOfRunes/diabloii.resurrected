@@ -1,7 +1,9 @@
 ﻿using STrain.Core.Enumerations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Enumerations
 {
+    [ExcludeFromCodeCoverage]
     public class SkillEnumeration : Enumeration
     {
         public string Description { get; }

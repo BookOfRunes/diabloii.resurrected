@@ -1,9 +1,11 @@
 ﻿using STrain.Core.Enumerations;
+using System.Diagnostics.CodeAnalysis;
 
 #nullable disable
 
 namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Enumerations
 {
+    [ExcludeFromCodeCoverage]
     public class RuneEnumeration : Enumeration
     {
         public int? Level { get; }

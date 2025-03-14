@@ -1,12 +1,14 @@
 ﻿using STrain.Core.Enumerations;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BookOfRunes.DiabloII.Resurrected.Infrastructure.Enumerations
 {
+    [ExcludeFromCodeCoverage]
     public class ItemTypeEnumeration : Enumeration
     {
         public string Class { get; }
