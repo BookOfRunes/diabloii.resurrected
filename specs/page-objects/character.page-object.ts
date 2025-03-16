@@ -20,11 +20,6 @@ export class CharacterPageObject {
     private readonly characterCreationPageObject: CharacterCreationPageObject
   ) {}
 
-  public async openAsync() {
-    await this.page.goto('');
-    await this.page.waitForLoadState('load');
-  }
-
   public async refreshAsync() {
     await this.page.reload();
     await this.page.waitForLoadState('load');
@@ -50,6 +45,7 @@ export class CharacterPageObject {
 
   public async saveAsync() {
     await this.page.getByTestId('btnSave').click();
+    await new Promise((resolve) => setTimeout(resolve, 100));
   }
 
   public async selectNextAsync() {

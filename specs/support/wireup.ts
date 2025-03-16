@@ -8,7 +8,6 @@ import {
   LaunchOptions,
   webkit,
 } from '@playwright/test';
-import { CharacterPageObject } from '../page-objects/character.page-object';
 import { InjectionToken } from './injection-token';
 
 setDefaultTimeout(60 * 1000);
@@ -44,12 +43,11 @@ Before(async () => {
 
   container.registerInstance(InjectionToken.browser, browser);
   container.registerInstance(InjectionToken.page, page);
-});
 
-Before(async () => {
-  await container.resolve(CharacterPageObject).openAsync();
+  await page.goto('');
 });
 
 After(async () => {
   await container.resolve<Browser>(InjectionToken.browser).close();
+  container.reset();
 });

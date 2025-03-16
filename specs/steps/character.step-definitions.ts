@@ -15,13 +15,11 @@ Given(
   }
 );
 
-Given('{string} is selected', async (name: string) => {
+Given('{string} is selected', async (_: string) => {
   await container.resolve(CharacterPageObject).refreshAsync();
 });
 
-When('Opening the application', async () => {
-  await container.resolve(CharacterPageObject).openAsync();
-});
+When('Opening the application', async () => {});
 
 When('Saving character', async () => {
   await container.resolve(CharacterPageObject).saveAsync();
@@ -31,11 +29,11 @@ When('Adding {string} character', async (name: string) => {
   await container.resolve(CharacterPageObject).addAsync(name);
 });
 
-When('Leveling up {string}', async (name: string) => {
+When('Leveling up {string}', async (_: string) => {
   await container.resolve(CharacterPageObject).levelUp();
 });
 
-When('Deleting {string}', async (name: string) => {
+When('Deleting {string}', async (_: string) => {
   await container.resolve(CharacterPageObject).deleteAsync();
 });
 
