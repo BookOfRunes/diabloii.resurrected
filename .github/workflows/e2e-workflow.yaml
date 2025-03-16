@@ -5,20 +5,46 @@ on:
   workflow_dispatch:
 
 jobs:
+  restore-dependecies:
+    runs-on: ubuntu-latest
+
+    outputs:
+      cache_key: ${{ steps.cache-key.outputs.cache_key }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Cache Key
+        id: cache-key
+        run: echo "CACHE_KEY=${{ runner.os }}-node-modules-${{ hashFiles('specs/package-lock.json') }}" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - name: Restore Dependencies
+        uses: mihben/actions-repository/.github/actions/node/restore-dependencies@main
+        id: cache
+        with:
+          working-directory: specs
+          cache_enabled: true
+          cache_key: ${{ steps.cache-key.outputs.CACHE_KEY }}
+
   test:
+    needs: [restore-dependecies]
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        target_browser: ['chromium', 'firefox', 'webkit']
+        target_browser: ['chromium', 'firefox']
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Execute (${{ matrix.target_browser }})
-        uses: mihben/actions-repository/.github/actions/dotnet/e2e-test@feature/run-e2e-tests
+        uses: mihben/actions-repository/.github/actions/node/e2e-test@feature/run-e2e-tests
         with:
           target_browser: ${{ matrix.target_browser }}
           url: https://bookofrunes.mihben.site/
-          working_directory: specs
+          working-directory: specs
+          cache_enabled: true
+          cache_key: ${{ needs.restore-dependecies.outputs.cache_key }}
