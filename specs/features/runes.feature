@@ -1,4 +1,4 @@
-﻿Feature: RN - Runes
+Feature: RN - Runes
 
 Runes can be saved for all of the characters.
 

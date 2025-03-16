@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "test": "tsc && cucumber-js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@faker-js/faker": "^9.6.0",
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "tsyringe": "^4.8.0",
+    "uuid": "^11.1.0"
+  }
+}

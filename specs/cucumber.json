@@ -1,0 +1,9 @@
+{
+  "default": {
+    "retry": 3,
+    "require": ["./dist/steps/", "./dist/support/"],
+    "requireModule": ["ts-node/register"],
+    "path": ["./features/.feature"],
+    "publishQuite": true
+  }
+}

@@ -18,7 +18,7 @@ Rule: CM/AC - Add Character
 Rule: CM/LU - Level Up Character
 
 	@e2e
-	Scenario: [E2E][CM/LU-001]: Level up characater
+	Scenario: [E2E][CM/LU-001]: Level up character
 		Given 'Harding' character is added with level 18
 		When Leveling up 'Harding'
 		Then Level should be 19
