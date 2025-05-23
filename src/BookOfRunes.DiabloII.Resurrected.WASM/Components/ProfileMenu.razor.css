@@ -1,0 +1,48 @@
+﻿.profile_menu__context {
+    visibility: hidden;
+
+    background-color: var(--color-panel-background);
+
+    border-color: var(--color-panel-border);
+    border-style: solid;
+    border-width: 1px;
+
+    padding: var( --padding-extra);
+
+    text-align: left;
+
+    border-radius: 6px;
+
+    position: absolute;
+
+    z-index: 1;
+
+    display: grid;
+    grid-auto-rows: max-content;
+
+    width: 160px;
+
+    left: 91%;
+    top: 8%;
+}
+
+.profile_menu__context--show {
+    visibility: visible;
+}
+
+.profile_menu__item {
+    padding: var(--padding);
+
+    cursor: pointer;
+}
+
+    .profile_menu__item:hover {
+        color: var(--color-text-highlighted);
+    }
+
+hr {
+    width: 100%;
+
+    color: var(--color-text);
+    border-color: var(--color-text);
+}

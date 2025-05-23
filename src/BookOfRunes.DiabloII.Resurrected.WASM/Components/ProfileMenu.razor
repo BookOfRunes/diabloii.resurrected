@@ -1,0 +1,42 @@
+﻿@using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager NavigationManager;
+@inject IDialogService DialogService;
+
+<div class="profile_menu__context @(Toggle ? "profile_menu__context--show" : "")">
+	<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+		<NotAuthorized>
+			<div class="profile_menu__item" @onclick="LogIn">Login</div>
+		</NotAuthorized>
+		<Authorized>
+			<div class="profile_menu__item" @onclick="LogOut">Logout</div>
+		</Authorized>
+	</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+	<hr/>
+	<div class="profile_menu__item" @onclick="ShowAbout">About</div>
+</div>
+
+<Dialog Key="dlgAbout">
+	<About></About>
+</Dialog>
+
+@code {
+	[Parameter]
+	public bool Toggle { get; set; }
+
+	private void LogIn()
+	{
+		NavigationManager.NavigateToLogin("authentication/login");
+	}
+
+	private void LogOut()
+	{
+		NavigationManager.NavigateToLogout("authentication/logout");
+	}
+
+	private void ShowAbout(MouseEventArgs args)
+	{
+		DialogService.Show("dlgAbout");
+	}
+}

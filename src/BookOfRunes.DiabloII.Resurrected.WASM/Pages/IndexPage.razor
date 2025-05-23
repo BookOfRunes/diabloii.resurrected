@@ -1,24 +1,45 @@
 ﻿@page "/"
+@using BookOfRunes.DiabloII.Resurrected.WASM.Contexts
 @using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog
 @using BookOfRunes.DiabloII.Resurrected.WASM.Controls.LoadingScreen
 @using BookOfRunes.DiabloII.Resurrected.WASM.Services
 @using BookOfRunes.DiabloII.Resurrected.WASM.Components
 @using BookOfRunes.DiabloII.Resurrected.WASM.Controls
-@using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog
-@using BookOfRunes.DiabloII.Resurrected.WASM.Controls.LoadingScreen
-@using BookOfRunes.DiabloII.Resurrected.WASM.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
 @inject IRuneService RuneService;
 @inject ICharacterService CharacterService;
 @inject IRuneWordService RuneWordService;
 @inject ILoading Loading;
-@inject IDialogService DialogService
+@inject NavigationManager Navigation;
+@inject UserContext UserContext;
 
 <div class="main">
 	<div class="panel header">
-		<img src="/assets/logo_1024x1024.png" height="48"/>
 		<div class="menu">
-			<span data-testid="mniAbout" class="menu__item about" @onclick="ShowAbout">About</span>
+			<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+				<NotAuthorized>
+					<div class="profile_menu" @onclick="() => menuToggled = !menuToggled">
+						<div class="profile">
+							<img class="profile__image" src="/assets/profile.svg" />
+							<span>Greetings traveler</span>
+						</div>
+					</div>
+
+					<ProfileMenu Toggle="@menuToggled"></ProfileMenu>
+				</NotAuthorized>
+				<Authorized>
+					<div class="profile_menu" @onclick="() => menuToggled = !menuToggled">
+						<div class="profile">
+							<img class="profile__image" src="/assets/profile.svg" />
+							<span>Greetings @UserContext.Name</span>
+						</div>
+					</div>
+
+					<ProfileMenu Toggle="@menuToggled"></ProfileMenu>
+				</Authorized>
+			</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
 		</div>
 	</div>
 	<div id="content" class="content">
@@ -41,11 +62,14 @@
 	</div>
 </div>
 
-<Dialog Key="dlgAbout">
-	<About></About>
-</Dialog>
-
 @code {
+	[CascadingParameter]
+	private Task<AuthenticationState> AuthenticationState { get; set; }
+
+	private bool menuToggled = false;
+
+	private string? name = null;
+
 	protected override async Task OnInitializedAsync()
 	{
 		using (Loading.Show())
@@ -57,10 +81,7 @@
 		CharacterService.Changed += (_, __) => StateHasChanged();
 		RuneWordService.Loaded += (_, __) => StateHasChanged();
 		RuneService.Changed += (_, __) => StateHasChanged();
-	}
 
-	private void ShowAbout(MouseEventArgs args)
-	{
-		DialogService.Show("dlgAbout");
+		await UserContext.InitializeAsync(AuthenticationState);
 	}
 }

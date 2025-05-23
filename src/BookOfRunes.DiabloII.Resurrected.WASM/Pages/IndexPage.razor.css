@@ -40,20 +40,59 @@
 
     div.header {
         padding: var(--padding-extra);
-
         display: grid;
-        grid-template-rows: auto auto;
-
+        grid-template-columns: 1fr auto;
         justify-items: center;
+
+        background-image: url('/assets/logo_1024x1024.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto;
     }
 
     div.menu {
         display: grid;
         grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        grid-column-gap: var(--gap-large);
 
-        justify-items: end;
+        justify-content: end;
+    }
+
+    div.profile {
+        display: grid;
+        grid-auto-flow: row;
+        grid-auto-rows: max-content;
+        grid-row-gap: var(--gap);
+
+        justify-items: center;
+
+        cursor: pointer;
     }
 
 span.menu__item {
     cursor: pointer;
+}
+
+img.banner {
+    grid-column-start: 0;
+    grid-column-end: 1;
+}
+
+img.profile__image {
+    height: 32px;
+
+    filter: brightness(0) saturate(100%) invert(59%) sepia(11%) saturate(15%) hue-rotate(28deg) brightness(95%) contrast(94%);;
+}
+
+.profile_menu {
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.profile_menu__context {
 }

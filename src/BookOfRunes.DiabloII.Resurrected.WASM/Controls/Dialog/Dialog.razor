@@ -2,7 +2,7 @@
 
 @if(DialogService[Key])
 {
-	<div class="overlay" @onclick="Close">
+	<div class="overlay" @onclick="Close" @onclick:stopPropagation="true">
 		<div class="content">
 			@ChildContent
 		</div>
@@ -25,7 +25,7 @@
 		DialogService.Changed += (_, __) => StateHasChanged();
 	}
 
-	private void Close()
+	private void Close(MouseEventArgs args)
 	{
 		// DialogService.Close();
 	}
