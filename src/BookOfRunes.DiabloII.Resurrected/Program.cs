@@ -1,4 +1,5 @@
 using BookOfRunes.DiabloII.Resurrected.Api;
+using BookOfRunes.DiabloII.Resurrected.Application.Contexts;
 using BookOfRunes.DiabloII.Resurrected.Application.Performers;
 using BookOfRunes.DiabloII.Resurrected.Infrastructure;
 using FluentValidation;
@@ -16,6 +17,13 @@ builder.Host.UseSerilog((context, configuration) => configuration.ReadFrom.Confi
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddAuthentication()
+	.AddJwtBearer(options =>
+	{
+		options.MetadataAddress = "https://login.microsoftonline.com/3e56baf4-8b33-4eac-abc7-fe892bc17c68/v2.0/.well-known/openid-configuration";
+		options.TokenValidationParameters.ValidateAudience = false;
+	});
+
 builder.Services.AddScoped<IValidator<GetRuneWordsQuery>, GetRuneWordsQueryValidator>();
 
 builder.AddCQS(builder =>
@@ -26,12 +34,15 @@ builder.AddCQS(builder =>
 		.UseFluentRequestValidator(_ => { });
 
 	builder.AddMvcRequestReceiver()
-		.UseLogger();
+		.UseLogger()
+		.UseAuthorization();
 
 	builder.AddGenericRequestHandler();
 });
 
 builder.Services.AddDbContext<DatabaseContext>(options => options.UseNpgsql(builder.Configuration["Database"]));
+
+builder.Services.AddScoped<IUserContext, UserContext>();
 
 var app = builder.Build();
 

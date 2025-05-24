@@ -1,5 +1,10 @@
 ﻿@page "/authentication/{action}"
+
+@using BookOfRunes.DiabloII.Resurrected.Api
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using STrain
+
+@inject IRequestSender Sender;
 
 <RemoteAuthenticatorView Action="@Action"></RemoteAuthenticatorView>
 

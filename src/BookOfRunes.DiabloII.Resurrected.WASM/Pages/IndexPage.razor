@@ -1,12 +1,15 @@
 ﻿@page "/"
+@using BookOfRunes.DiabloII.Resurrected.Api
 @using BookOfRunes.DiabloII.Resurrected.WASM.Contexts
 @using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog
 @using BookOfRunes.DiabloII.Resurrected.WASM.Controls.LoadingScreen
+@using BookOfRunes.DiabloII.Resurrected.WASM.Models
 @using BookOfRunes.DiabloII.Resurrected.WASM.Services
 @using BookOfRunes.DiabloII.Resurrected.WASM.Components
 @using BookOfRunes.DiabloII.Resurrected.WASM.Controls
 @using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using STrain
 
 @inject IRuneService RuneService;
 @inject ICharacterService CharacterService;
@@ -14,7 +17,8 @@
 @inject ILoading Loading;
 @inject NavigationManager Navigation;
 @inject UserContext UserContext;
-
+@inject IMigrationService MigrationService;
+ 
 <div class="main">
 	<div class="panel header">
 		<div class="menu">
@@ -22,7 +26,6 @@
 				<NotAuthorized>
 					<div class="profile_menu" @onclick="() => menuToggled = !menuToggled">
 						<div class="profile">
-							<img class="profile__image" src="/assets/profile.svg" />
 							<span>Greetings traveler</span>
 						</div>
 					</div>
@@ -32,7 +35,6 @@
 				<Authorized>
 					<div class="profile_menu" @onclick="() => menuToggled = !menuToggled">
 						<div class="profile">
-							<img class="profile__image" src="/assets/profile.svg" />
 							<span>Greetings @UserContext.Name</span>
 						</div>
 					</div>
@@ -62,9 +64,25 @@
 	</div>
 </div>
 
+<Dialog Key="dlgMigration">
+	<div class="migration">
+		<span class="migration__header">Data migration is in progress</span>
+
+		<div class="migration__steps">
+			@foreach (var step in MigrationService.Steps)
+			{
+				<div class="migration__step">
+					<img class="migration__step_state" src="@GetStateIcon(step.State)"/>
+					<span class="migration__step_message migration__step_message--@step.State.ToString().ToLower()">@step.Message</span>
+				</div>			
+			}
+		</div>
+	</div>
+</Dialog>
+
 @code {
 	[CascadingParameter]
-	private Task<AuthenticationState> AuthenticationState { get; set; }
+	public Task<AuthenticationState> AuthenticationState { get; set; } = null!;
 
 	private bool menuToggled = false;
 
@@ -83,5 +101,21 @@
 		RuneService.Changed += (_, __) => StateHasChanged();
 
 		await UserContext.InitializeAsync(AuthenticationState);
+		if (UserContext.IsAuthenticated)
+		{
+			MigrationService.ProgressChanged += (_, __) => StateHasChanged();
+			await MigrationService.MigrateAsync(default);
+		}
+	}
+
+	private string GetStateIcon(ProcessStepState state)
+	{
+		switch (state)
+		{
+			case ProcessStepState.NotStarted: return "/assets/waiting.svg";
+			case ProcessStepState.InProgress: return "/assets/frozen-orb-cropped.gif";
+			case ProcessStepState.Succedded: return "/assets/succedded.svg";
+			default: return "";
+		}
 	}
 }
