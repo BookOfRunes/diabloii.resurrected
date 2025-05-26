@@ -31,7 +31,7 @@ builder.AddCQS(builder =>
 	builder.AddPerformersFrom<RunePerformers>();
 
 	builder.AddRequestValidator()
-		.UseFluentRequestValidator(_ => { });
+		.UseFluentRequestValidator(builder => builder.RegistrateFrom<SaveCharacterCommandValidator>());
 
 	builder.AddMvcRequestReceiver()
 		.UseLogger()

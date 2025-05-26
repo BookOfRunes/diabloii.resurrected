@@ -8,37 +8,43 @@
 @inject ICharacterService CharacterService;
 @inject IRuneService RuneService;
 
-<EditForm Model="CharacterService.Current">
-    <div class="main">
-        <div class="basics">
-            <span data-testid="spnRuneWord" class="name">@Model.Name</span>
-            <div class="runes">
-                @foreach (var rune in Model.Runes)
-                {
-                        <Rune Model="GetRune(rune)" Available="rune.Level.GetValueOrDefault() <= Level && Runes.Contains(rune.Id)"></Rune>
-                }
-            </div>
-            <div class="item-types">
-                (
-                @foreach (var itemType in Model.ItemTypes)
-                {
-                    <span class="@(ItemTypes.Contains(itemType.Id) ? "available" : "")">@GetItemType(itemType)</span>
-                }
-                )
-            </div>
-            <div>
-                <span class="label">Level:</span>
-                <span class="level @(Model.Level <= Level ? "" : "unavailable")">@Model.Level</span>
-            </div>
-        </div>
-        <div class="description">
-            @foreach (var statistic in Model.Statistics)
+<div class="main">
+    <div class="basics">
+        <span data-testid="spnRuneWord" class="name">@Model.Name</span>
+        <div class="runes">
+            @foreach (var rune in Model.Runes)
             {
-                <span data-testid="txtDescription">@GetDescription(statistic)</span>
+                    <Rune Model="GetRune(rune)" Available="rune.Level.GetValueOrDefault() <= Level && Runes.Contains(rune.Id)"></Rune>
             }
         </div>
+        <div class="item-types">
+            (
+            @foreach (var itemType in Model.ItemTypes.Take(11))
+            {
+                <span class="item-type @(ItemTypes.Contains(itemType.Id) ? "available" : "")">@GetItemType(itemType)</span>
+            }
+            @if (Model.ItemTypes.Count() > 11)
+            {
+                <br/>                
+            }
+            @foreach (var itemType in Model.ItemTypes.Skip(11))
+            {
+                <span class="item-type @(ItemTypes.Contains(itemType.Id) ? "available" : "")">@GetItemType(itemType)</span>
+            }
+            )
+        </div>
+        <div>
+            <span class="label">Level:</span>
+            <span class="level @(Model.Level <= Level ? "" : "unavailable")">@Model.Level</span>
+        </div>
     </div>
-</EditForm>
+    <div class="description">
+        @foreach (var statistic in Model.Statistics)
+        {
+            <span data-testid="txtDescription">@GetDescription(statistic)</span>
+        }
+    </div>
+</div>
 
 @code {
     [Parameter]
