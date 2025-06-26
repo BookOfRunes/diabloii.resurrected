@@ -5,6 +5,7 @@ using BookOfRunes.DiabloII.Resurrected.WASM.Contexts;
 using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog;
 using BookOfRunes.DiabloII.Resurrected.WASM.Controls.LoadingScreen;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
+using BookOfRunes.DiabloII.Resurrected.WASM.Services.DataService;
 using LightInject;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -31,7 +32,7 @@ builder.Services.AddSingleton<IRuneService, RuneService>();
 builder.Services.AddSingleton<ICharacterService, CharacterService>();
 builder.Services.AddSingleton<IRuneWordService, RuneWordService>();
 
-builder.Services.AddScoped<UserContext>();
+builder.Services.AddSingleton<UserContext>();
 
 builder.Services.AddSingleton<Loading>();
 builder.Services.AddSingleton<ILoading>(provider => provider.GetRequiredService<Loading>());
@@ -39,6 +40,10 @@ builder.Services.AddSingleton<ILoading>(provider => provider.GetRequiredService<
 builder.Services.AddSingleton<DialogService>();
 builder.Services.AddSingleton<IDialogService>(provider => provider.GetRequiredService<DialogService>());
 builder.Services.AddTransient<IMigrationService, MigrationService>();
+
+builder.Services.AddTransient<IDataServiceProvider, DataServiceProvider>();
+builder.Services.AddTransient<LocalStorageDataService>();
+builder.Services.AddTransient<CloudDataService>();
 
 builder.Services.AddBlazoredLocalStorage();
 

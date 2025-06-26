@@ -12,6 +12,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Application.Performers
 	public class UserDataPerformers : IQueryPerformer<HasUserDataQuery, bool>,
 		ICommandPerformer<CreateUserCommand>,
 		ICommandPerformer<SaveRunesCommand>,
+		IQueryPerformer<GetCharactersQuery, IEnumerable<GetCharactersQuery.Result>>,
 		ICommandPerformer<SaveCharacterCommand>
 	{
 		private readonly DatabaseContext _database;
@@ -84,6 +85,18 @@ namespace BookOfRunes.DiabloII.Resurrected.Application.Performers
 
 			await _database.SaveChangesAsync(cancellationToken);
 			await transaction.CommitAsync(cancellationToken);
+		}
+
+		public async Task<IEnumerable<GetCharactersQuery.Result>> PerformAsync(GetCharactersQuery query, CancellationToken cancellationToken)
+		{
+			var characters = await _database.Characters.Include(c => c.Class).Where(c => c.User.Id == _user.Id).ToListAsync(cancellationToken: cancellationToken);
+
+			return characters.ConvertAll(c => new GetCharactersQuery.Result
+			{
+				Name = c.Name,
+				Level = c.Level,
+				Class = c.Class.Id
+			});
 		}
 	}
 }

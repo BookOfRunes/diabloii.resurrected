@@ -1,5 +1,6 @@
 ﻿using AutoBogus;
 using BookOfRunes.DiabloII.Resurrected.Api;
+using BookOfRunes.DiabloII.Resurrected.WASM.Controls.Dialog;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
 using BookOfRunes.DiabloII.Resurrected.WASM.Services;
 using Microsoft.Extensions.Logging;
@@ -17,6 +18,7 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 		private Mock<IRequestSender> _requestSenderMock = null!;
 		private Mock<IRuneService> _runeServiceMock = null!;
 		private Mock<ICharacterService> _characterServiceMock = null!;
+		private Mock<IDialogService> _dialogServiceMock;
 
 		public MigrationServiceTest(ITestOutputHelper outputHelper)
 		{
@@ -30,8 +32,9 @@ namespace BookOfRunes.DiabloII.Resurrected.Test.Unit.WASM.Services
 			_requestSenderMock = new Mock<IRequestSender>();
 			_runeServiceMock = new Mock<IRuneService>();
 			_characterServiceMock = new Mock<ICharacterService>();
+			_dialogServiceMock = new Mock<IDialogService>();
 
-			return new MigrationService(_requestSenderMock.Object, _runeServiceMock.Object, _characterServiceMock.Object, _logger);
+			return new MigrationService(_requestSenderMock.Object, _runeServiceMock.Object, _characterServiceMock.Object, _dialogServiceMock.Object, _logger);
 		}
 
 		[Trait("FeatureTitle", "UD - User Data")]

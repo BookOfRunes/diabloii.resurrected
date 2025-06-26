@@ -2,8 +2,7 @@
 using BookOfRunes.DiabloII.Resurrected.Api;
 using BookOfRunes.DiabloII.Resurrected.WASM.Defaults;
 using BookOfRunes.DiabloII.Resurrected.WASM.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using BookOfRunes.DiabloII.Resurrected.WASM.Services.DataService;
 using STrain;
 using System.Runtime.CompilerServices;
 
@@ -27,13 +26,14 @@ namespace BookOfRunes.DiabloII.Resurrected.WASM.Services
 		void Previous();
 	}
 
-	public class CharacterService(ILocalStorageService storage, IRequestSender sender) : ICharacterService
+	public class CharacterService(ILocalStorageService storage, IDataServiceProvider dataServiceProvider, IRequestSender sender) : ICharacterService
 	{
 		private const string KEY = "characters";
 
 		private IEnumerable<GetItemTypesQuery.Result> _itemTypes = [];
 
 		private readonly ILocalStorageService _storage = storage;
+		private readonly IDataServiceProvider _dataServiceProvider = dataServiceProvider;
 		private readonly IRequestSender _sender = sender;
 
 		private ICollection<Character> _characters = [];
@@ -49,33 +49,11 @@ namespace BookOfRunes.DiabloII.Resurrected.WASM.Services
 		{
 			_itemTypes = await _sender.GetAsync<GetItemTypesQuery, IEnumerable<GetItemTypesQuery.Result>>(new GetItemTypesQuery(), cancellationToken) ?? [];
 
-			var raw = await _storage.GetItemAsStringAsync(KEY, cancellationToken);
-			if (!string.IsNullOrWhiteSpace(raw))
-			{
-				var data = JsonConvert.DeserializeObject<IEnumerable<Data>>(raw, new JsonSerializerSettings
-				{
-					Converters = [new StringEnumConverter()]
-				}) ?? [];
-				_characters = [.. data.Select(d => new Character
-				{
-					Name = d.Name,
-					Class = d.Class,
-					Level = d.Level,
-					Filters = new FilterData
-					{
-						ItemTypes = _itemTypes!.Select(it => new ItemType { Id = it.Id, Class = it.Class, Name = it.Name, Selected = d.Filters.Contains(it.Id) }).ToList()
-					}
-				})];
-			}
+			_characters = [.. await _dataServiceProvider.Get().GetAsync(cancellationToken)];
 
 			foreach (var character in _characters)
 			{
 				character.PropertyChanged += (_, __) => Changed?.Invoke(this, EventArgs.Empty);
-
-				foreach (var filter in character.Filters.ItemTypes)
-				{
-					filter.PropertyChanged += (_, __) => Changed?.Invoke(this, EventArgs.Empty);
-				}
 			}
 
 			Loaded?.Invoke(this, EventArgs.Empty);

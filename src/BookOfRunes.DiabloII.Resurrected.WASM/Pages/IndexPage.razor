@@ -90,12 +90,6 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		using (Loading.Show())
-		{
-			await RuneService.LoadAsync(default);
-			await CharacterService.LoadAsync(default);
-		}
-
 		CharacterService.Changed += (_, __) => StateHasChanged();
 		RuneWordService.Loaded += (_, __) => StateHasChanged();
 		RuneService.Changed += (_, __) => StateHasChanged();
@@ -105,6 +99,12 @@
 		{
 			MigrationService.ProgressChanged += (_, __) => StateHasChanged();
 			await MigrationService.MigrateAsync(default);
+		}
+
+		using (Loading.Show())
+		{
+			await RuneService.LoadAsync(default);
+			await CharacterService.LoadAsync(default);
 		}
 	}
 
